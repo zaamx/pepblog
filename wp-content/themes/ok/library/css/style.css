@@ -1,0 +1,815 @@
+/******************************************************************
+Stylesheet: Main Stylesheet
+******************************************************************/
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Base Mobile Stylesheet
+
+Be light and don't over style since everything here will be
+loaded by mobile devices. You want to keep it as minimal as
+possible. This is called at the top of the main stylsheet
+and will be used across all viewports.
+
+------------ MAP ------------
+
+01. GENERAL STYLES
+02. WORDPRESS BODY CLASSES
+03. LAYOUT & GRID STYLES
+04. LINK STYLES
+05. H1, H2, H3, H4, H5 STYLES
+06. HEADER STYLES
+07. NAVIGATION STYLES
+08. POSTS & CONTENT STYLES
+09. PAGE NAVI STYLES
+10. COMMENT STYLES
+11. COMMENT FORM STYLES
+12. SIDEBARS & ASIDES
+13. FOOTER STYLES
+
+******************************************************************/
+/*********************
+01. GENERAL STYLES
+*********************/
+html,
+body {
+  /* height: 100%; */
+}
+body {
+  padding-top: 70px;
+}
+/********************
+02. WORDPRESS BODY CLASSES
+    style a page via class
+********************/
+/* for sites that are read right to left (i.e. hebrew) */
+/* home page */
+/* blog template page */
+/* archive page */
+/* date archive page */
+/* replace the number to the corresponding page number */
+/* search page */
+/* search result page */
+/* no results search page */
+/* individual paged search (i.e. body.search-paged-3) */
+/* 404 page */
+.single .hentry {
+  border: none;
+}
+.single .hentry:hover {
+  border: none;
+}
+/* single post page */
+/* individual post page by id (i.e. body.postid-73) */
+/* individual paged single (i.e. body.single-paged-3) */
+/* attatchment page */
+/* individual attatchment page (i.e. body.attachmentid-763) */
+/* style mime type pages */
+/* author page */
+/* user nicename (i.e. body.author-samueladams) */
+/* paged author archives (i.e. body.author-paged-4) for page 4 */
+/* category page */
+/* individual category page (i.e. body.category-6) */
+/* replace the number to the corresponding page number */
+/* tag page */
+/* individual tag page (i.e. body.tag-news) */
+/* replace the number to the corresponding page number */
+/* custom page template page */
+/* individual page template (i.e. body.page-template-contact-php */
+/* replace the number to the corresponding page number */
+/* parent page template */
+/* child page template */
+/* replace the number to the corresponding page number */
+/* if user is logged in */
+/* paged items like search results or archives */
+/* individual paged (i.e. body.paged-3) */
+/*********************
+03. LAYOUT & GRID STYLES
+*********************/
+/*********************
+06. HEADER STYLES
+*********************/
+.navbar-brand {
+  padding: 5px 0;
+}
+article.destacado {
+  border: none;
+  position: relative;
+}
+article.destacado:hover {
+  border: none;
+}
+article.destacado header.article-header {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: #eeeeee;
+  padding: 10px;
+}
+/*********************
+08. POSTS & CONTENT STYLES
+*********************/
+#content #inner-content #main {
+  margin-top: 2.2em;
+}
+.archivos {
+  border: 1px solid #eeeeee;
+}
+.archivos:hover {
+  border: 1px solid #9ec648;
+}
+.hentry {
+  border-radius: 3px;
+  margin-bottom: 1.5em;
+  overflow: hidden;
+}
+.hentry footer {
+  padding: 0 0.25em ;
+}
+.hentry footer p {
+  margin: 0;
+}
+/* end .hentry */
+.single-title,
+.page-title,
+.entry-title {
+  margin: 0;
+  padding: 0.25em;
+  text-transform: uppercase;
+  color: #9ec648;
+}
+/* want to style individual post classes? Booya! */
+/* post by id (i.e. post-3) */
+/* general post style */
+/* general article on a page style */
+/* general style on an attatchment */
+/* sticky post style */
+/* hentry class */
+/* style by category (i.e. category-videos) */
+/* style by tag (i.e. tag-news) */
+/* post meta */
+.byline {
+  color: #999999;
+}
+/* entry content */
+.entry-content {
+  padding: 0.5em 0.25em 0;
+  /*
+			image alignment on a screen this size may be
+			a bit difficult. It's set to start aligning
+			and floating images at the next breakpoint,
+			but it's up to you. Feel free to change it up.
+			*/
+}
+.entry-content p {
+  margin: 0 0  5px;
+}
+.entry-content table {
+  width: 100%;
+  border: 1px solid #555555;
+  margin-bottom: 1.5em;
+}
+.entry-content table caption {
+  margin: 0 0 7px;
+  font-size: 0.75em;
+  color: #999999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.entry-content tr {
+  border-bottom: 1px solid #555555;
+}
+.entry-content tr:nth-child(even) {
+  background-color: #999999;
+}
+.entry-content td {
+  padding: 7px;
+  border-right: 1px solid #555555;
+}
+.entry-content td:last-child {
+  border-right: 0;
+}
+.entry-content th {
+  background-color: #999999;
+  border-bottom: 1px solid #555555;
+  border-right: 1px solid #555555;
+}
+.entry-content th:last-child {
+  border-right: 0;
+}
+.entry-content blockquote {
+  margin: 0 0 1.5em 0.75em;
+  padding: 0 0 0 0.75em;
+  border-left: 3px solid #4f7bbc;
+  font-style: italic;
+  color: #999999;
+}
+.entry-content dd {
+  margin-left: 0;
+  font-size: 0.9em;
+  color: #787878;
+  margin-bottom: 1.5em;
+}
+.entry-content img {
+  margin: 0 0 1.5em 0;
+  max-width: 100%;
+  height: auto;
+}
+.entry-content .size-auto,
+.entry-content .size-full,
+.entry-content .size-large,
+.entry-content .size-medium,
+.entry-content .size-thumbnail {
+  max-width: 100%;
+  height: auto;
+}
+.entry-content pre {
+  background: #222222;
+  color: #999999;
+  font-size: 0.9em;
+  padding: 1.5em;
+  margin: 0 0 1.5em;
+  border-radius: 3px;
+}
+/* end .entry-content */
+.wp-caption {
+  max-width: 100%;
+  background: #eee;
+  padding: 5px;
+  /* images inside wp-caption */
+}
+.wp-caption img {
+  max-width: 100%;
+  margin-bottom: 0;
+  width: 100%;
+}
+.wp-caption p.wp-caption-text {
+  font-size: 0.85em;
+  margin: 4px 0 7px;
+  text-align: center;
+}
+/* end .wp-caption */
+/* image gallery styles */
+/* end .gallery */
+/* gallery caption styles */
+.tags {
+  margin: 0;
+}
+/******************************************************************
+09. PAGE NAVI STYLES
+******************************************************************/
+.page-navigation,
+.wp-prev-next {
+  margin: 1.1em 0 2.2em;
+}
+.pagination {
+  text-align: center;
+}
+.pagination .current {
+  cursor: default;
+  background: #9ec648;
+  color: #eeeeee;
+}
+.pagination .current:hover,
+.pagination .current:focus {
+  background: #82a734;
+  color: #eeeeee;
+}
+/* end .bones_page_navi */
+/* fallback previous & next links */
+.wp-prev-next .prev-link {
+  float: left;
+}
+.wp-prev-next .next-link {
+  float: right;
+}
+/* end .wp-prev-next */
+/******************************************************************
+10. COMMENT STYLES
+******************************************************************/
+/* h3 comment title */
+#comments-title {
+  padding: 0.75em;
+  margin: 0;
+  border-top: 1px solid #999999;
+  /* number of comments span */
+}
+.commentlist {
+  margin: 0;
+  list-style-type: none;
+}
+.comment {
+  position: relative;
+  clear: both;
+  overflow: hidden;
+  padding: 1.5em;
+  border-bottom: 1px solid #999999;
+  /* vcard */
+  /* end .commentlist .vcard */
+  /* end children */
+  /* general comment classes */
+}
+.comment .comment-author {
+  padding: 7px;
+  border: 0;
+}
+.comment .vcard {
+  margin-left: 50px;
+}
+.comment .vcard cite.fn {
+  font-weight: 700;
+  font-style: normal;
+}
+.comment .vcard time {
+  display: block;
+  font-size: 0.9em;
+  font-style: italic;
+}
+.comment .vcard time a {
+  color: #999999;
+  text-decoration: none;
+}
+.comment .vcard time a:hover {
+  text-decoration: underline;
+}
+.comment .vcard .avatar {
+  position: absolute;
+  left: 16px;
+  border-radius: 50%;
+}
+.comment:last-child {
+  margin-bottom: 0;
+}
+.comment .children {
+  margin: 0;
+  /* variations */
+  /* change number for different depth */
+}
+.comment[class*=depth-] {
+  margin-top: 1.1em;
+}
+.comment.depth-1 {
+  margin-left: 0;
+  margin-top: 0;
+}
+.comment:not(.depth-1) {
+  margin-top: 0;
+  margin-left: 7px;
+  padding: 7px;
+}
+.comment.odd {
+  background-color: #eeeeee;
+}
+.comment.even {
+  background: #999999;
+}
+/* comment meta */
+/* comment content */
+.comment_content p {
+  margin: 0.7335em 0 1.5em;
+  font-size: 1em;
+  line-height: 1.5em;
+}
+/* end .commentlist .comment_content */
+/* comment reply link */
+.comment-reply-link {
+  font-size: 0.9em;
+  float: right;
+}
+/* end .commentlist .comment-reply-link */
+/* edit comment link */
+.comment-edit-link {
+  font-style: italic;
+  margin: 0 7px;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+/******************************************************************
+11. COMMENT FORM STYLES
+******************************************************************/
+.comment-respond {
+  padding: 1.5em;
+}
+#reply-title {
+  margin: 0;
+}
+.logged-in-as {
+  color: #999999;
+  font-style: italic;
+  margin: 0;
+}
+.logged-in-as a {
+  color: #555555;
+}
+.comment-form-comment {
+  margin: 1.5em 0 0.75em;
+}
+.comment-form-comment label {
+  width: 100%;
+}
+.comment-form-comment textarea {
+  width: 100%;
+}
+.form-allowed-tags {
+  border: 1px solid #eeeeee;
+  padding: 1.5em;
+  font-size: 0.9em;
+}
+.form-allowed-tags code {
+  display: block;
+  white-space: normal;
+}
+/* comment submit button */
+#submit {
+  float: right;
+  font-size: 1em;
+}
+/* comment form title */
+#comment-form-title {
+  margin: 0 0 1.1em;
+}
+/* cancel comment reply link */
+/* logged in comments */
+/* allowed tags */
+#allowed_tags {
+  margin: 1.5em 10px 0.7335em 0;
+}
+/* no comments */
+.nocomments {
+  margin: 0 20px 1.1em;
+}
+/*********************
+12. SIDEBARS & ASIDES
+*********************/
+.widgettitle {
+  text-transform: uppercase;
+}
+.widget ul li {
+  /* deep nesting */
+}
+.no-widgets {
+  background-color: #eeeeee;
+  padding: 1.5em;
+  text-align: center;
+  border: 1px solid #999999;
+  border-radius: 2px;
+  margin-bottom: 1.5em;
+}
+/*********************
+13. FOOTER STYLES
+*********************/
+.footer {
+  /*----------------------- Marcas ----------------------- */
+}
+.footer #marcas {
+  background: #444444;
+  padding: 40px 0;
+}
+.footer #marcas ul#brand-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.footer #marcas ul#brand-list li {
+  float: left;
+}
+.footer #marcas ul#brand-list li a.brand-logo {
+  display: block;
+  width: 75px;
+  height: 75px;
+  margin: 5px;
+}
+.footer #copyright {
+  padding: 30px 0;
+  background: #222222;
+  color: #eeeeee;
+}
+.footer #copyright a {
+  color: #eeeeee;
+}
+/*
+	if you checked out the link above:
+	http://www.alistapart.com/articles/organizing-mobile/
+	you'll want to style the footer nav
+	a bit more in-depth. Remember to keep
+	it simple because you'll have to
+	override these styles for the desktop
+	view.
+	*/
+/* end .footer-links */
+/*----------------------- Utilerias ----------------------- */
+.txt-bg {
+  text-transform: uppercase;
+  padding: 5px;
+}
+.bg-white {
+  background: #eeeeee;
+  color: #444444;
+}
+.bg-black {
+  background: #444444;
+  color: #eeeeee;
+}
+.img-responsive2 {
+  width: 100%;
+  height: auto;
+}
+.introSeccion span {
+  display: block;
+  text-transform: uppercase;
+  border-bottom: 2px solid #444444;
+  padding: 10px 0;
+  margin: 10px 0 25px;
+  font-size: 18px;
+}
+.boxInt img {
+  width: 100%;
+}
+.borders-byt {
+  padding: 10px  0 !important;
+  border-top: 1px solid #999999;
+  border-bottom: 1px solid #999999;
+}
+a.social-footer {
+  font-size: 20px;
+  margin: 0 5px;
+  color: #555555;
+}
+a.social-footer:hover {
+  color: #9ec648;
+}
+.color-bar {
+  background-image: url('../images/bg-color-ng.png');
+  background-repeat: repeat-y;
+  background-size: 100%;
+  width: 100%;
+  height: 3px;
+}
+.cont-persona article.item-persona {
+  position: relative;
+  margin: 0 -15px;
+  text-align: center;
+}
+.cont-persona article.item-persona img.img-2 {
+  display: none;
+}
+.cont-persona article.item-persona header {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.9);
+  color: #eeeeee;
+  text-transform: uppercase;
+}
+.cont-persona article.item-persona:hover img.img-2 {
+  display: block;
+  position: absolute;
+  top: 0;
+}
+.cont-persona article.item-persona:hover header {
+  background: #4f7bbc;
+}
+article.item-noticia {
+  position: relative;
+  margin: 20px 0;
+}
+article.item-noticia header {
+  background: url('../svg/frame-noticias.svg') rgba(0, 0, 0, 0.6);
+  background-size: 100% 100%;
+  padding: 10% 5%;
+}
+article.item-noticia header h4 {
+  color: #eeeeee;
+}
+article.item-noticia header h4 small {
+  display: inline-block;
+  padding-top: 10px;
+  color: #eeeeee;
+  font-family: "Roboto Slab", Georgia, "Times New Roman", Times, serif;
+}
+/*----------------------- TABS SOCIALES ----------------------- */
+#tab-social {
+  padding: 40px 0;
+}
+#tab-social .superior {
+  border-bottom: 1px solid #4f7bbc;
+}
+#tab-social .superior .nav-tabs {
+  border: none;
+}
+#tab-social .superior .nav-tabs li {
+  float: left;
+  display: block;
+  width: 20%;
+  margin-bottom: -1px;
+  font-size: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+#tab-social .superior .nav-tabs li a {
+  color: #999999;
+}
+#tab-social .superior .nav-tabs li.active a {
+  border-top: 2px solid #4f7bbc;
+  color: #4f7bbc;
+}
+#tab-social .inferior .tab-content .tab-pane {
+  padding: 25px 0;
+}
+@media only screen and (min-width: 481px) {
+  /******************************************************************
+Site Name:
+Author:
+
+Stylesheet: 481px and Up Stylesheet
+
+This stylesheet is loaded for larger devices. It's set to
+481px because at 480px it would load on a landscaped iPhone.
+This isn't ideal because then you would be loading all those
+extra styles on that same mobile connection.
+
+A word of warning. This size COULD be a larger mobile device,
+so you still want to keep it pretty light and simply expand
+upon your base.scss styles.
+
+******************************************************************/
+  /*********************
+NAVIGATION STYLES
+*********************/
+  /* .menu is clearfixed inside mixins.scss */
+  .menu {
+    /* end .menu ul */
+  }
+  .menu ul {
+    /* end .menu ul li */
+    /* highlight current page */
+    /* end current highlighters */
+  }
+  .menu ul li {
+    /*
+				plan your menus and drop-downs wisely.
+				*/
+  }
+  .menu ul li a {
+    /*
+					you can use hover styles here even though this size
+					has the possibility of being a mobile device.
+					*/
+  }
+  /* end .menu */
+  /*********************
+POSTS & CONTENT STYLES
+*********************/
+  /* entry content */
+  .entry-content {
+    /* at this larger size, we can start to align images */
+  }
+  .entry-content .alignleft,
+  .entry-content img.alignleft {
+    margin-right: 1.5em;
+    display: inline;
+    float: left;
+  }
+  .entry-content .alignright,
+  .entry-content img.alignright {
+    margin-left: 1.5em;
+    display: inline;
+    float: right;
+  }
+  .entry-content .aligncenter,
+  .entry-content img.aligncenter {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    clear: both;
+  }
+  /* end .entry-content */
+  /*********************
+FOOTER STYLES
+*********************/
+  /*
+check your menus here. do they look good?
+do they need tweaking?
+*/
+  /* end .footer-links */
+}
+@media only screen and (min-width: 768px) {
+  /******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Tablet & Small Desktop Stylesheet
+
+Here's where you can start getting into the good stuff.
+This size will work on iPads, other tablets, and desktops.
+So you can start working with more styles, background images,
+and other resources. You'll also notice the grid starts to
+come into play. Have fun!
+
+******************************************************************/
+  /*********************
+GENERAL STYLES
+*********************/
+  /*********************
+LAYOUT & GRID STYLES
+*********************/
+  .wrap {
+    width: 760px;
+  }
+  /*********************
+HEADER STYLES
+*********************/
+  /*********************
+NAVIGATION STYLES
+*********************/
+  /*********************
+SIDEBARS & ASIDES
+*********************/
+  .sidebar {
+    background: #eeeeee;
+    margin-top: 2.2em;
+  }
+  .widgettitle {
+    padding: 0 0 5px;
+    border-bottom: 1px solid #999999;
+    margin-bottom: 0.75em;
+  }
+  .widget {
+    padding: 0;
+    margin: 2.2em 0;
+  }
+  .widget ul li {
+    margin-bottom: 0.75em;
+    /* deep nesting */
+  }
+  .widget ul li ul {
+    margin-top: 0.75em;
+    padding-left: 1em;
+  }
+  /* links widget */
+  /* meta widget */
+  /* pages widget */
+  /* recent-posts widget */
+  /* archives widget */
+  /* tag-cloud widget */
+  /* calendar widget */
+  /* category widget */
+  /* recent-comments widget */
+  /* search widget */
+  /* text widget */
+  /*********************
+FOOTER STYLES
+*********************/
+  /*
+you'll probably need to do quite a bit
+of overriding here if you styled them for
+mobile. Make sure to double check these!
+*/
+  .footer-links ul li {
+    /*
+			be careful with the depth of your menus.
+			it's very rare to have multi-depth menus in
+			the footer.
+			*/
+  }
+  /* end .footer-links */
+}
+/*
+iPHONE 5 MEDIA QUERY
+Want to get fancy for no good reason? Knock yourself out.
+*/
+.col-xs-19,
+.col-sm-19,
+.col-md-19,
+.col-lg-19 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.col-xs-19 {
+  width: 11.1111%;
+  float: left;
+}
+@media (min-width: 768px) {
+  .col-sm-19 {
+    width: 11.1111%;
+    float: left;
+  }
+}
+@media (min-width: 992px) {
+  .col-md-19 {
+    width: 11.1111%;
+    float: left;
+  }
+}
+@media (min-width: 1200px) {
+  .col-lg-19 {
+    width: 11.1111%;
+    float: left;
+  }
+}

@@ -1,0 +1,1411 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"fl",
+				"float"
+			],
+			[
+				"border",
+				"border-top"
+			],
+			[
+				"BA",
+				"background-repeat"
+			],
+			[
+				"brand",
+				"brand-success"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"tex",
+				"text-transform"
+			],
+			[
+				"text-",
+				"text-transform"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"bac",
+				"background"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"rgb",
+				"rgba(r,g,b,a)"
+			],
+			[
+				"boder",
+				"border"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"margin",
+				"margin"
+			],
+			[
+				"z-",
+				"z-index"
+			],
+			[
+				"gray-li",
+				"gray-lighter"
+			],
+			[
+				"r",
+				"right"
+			],
+			[
+				"ba",
+				"background"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"gray-dar",
+				"gray-dark"
+			],
+			[
+				"paddi",
+				"padding-top"
+			],
+			[
+				"gray-d",
+				"gray-dark"
+			],
+			[
+				"j",
+				"jQuery"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"d",
+				"display"
+			],
+			[
+				"cont",
+				"contID-100"
+			],
+			[
+				"fic",
+				"fichaInfo"
+			],
+			[
+				"pop",
+				"pops"
+			],
+			[
+				"list-s",
+				"list-style"
+			],
+			[
+				"boo",
+				"bottom"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"convo",
+				"Convocatorias"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "<?php get_header(); ?>\n\n			<div id=\"content\" class=\"container\">\n\n				<div id=\"inner-content\" class=\"row\">\n\n						<div id=\"main\" class=\"col-md-9\" role=\"main\">\n\n							<?php if (is_category()) { ?>\n								<h1 class=\"archive-title h2\">\n									<span><?php _e( 'Posts Categorized:', 'bonestheme' ); ?></span> <?php single_cat_title(); ?>\n								</h1>\n\n							<?php } elseif (is_tag()) { ?>\n								<h1 class=\"archive-title h2\">\n									<span><?php _e( 'Posts Tagged:', 'bonestheme' ); ?></span> <?php single_tag_title(); ?>\n								</h1>\n\n							<?php } elseif (is_author()) {\n								global $post;\n								$author_id = $post->post_author;\n							?>\n								<h1 class=\"archive-title h2\">\n\n									<span><?php _e( 'Posts By:', 'bonestheme' ); ?></span> <?php the_author_meta('display_name', $author_id); ?>\n\n								</h1>\n							<?php } elseif (is_day()) { ?>\n								<h1 class=\"archive-title h2\">\n									<span><?php _e( 'Daily Archives:', 'bonestheme' ); ?></span> <?php the_time('l, F j, Y'); ?>\n								</h1>\n\n							<?php } elseif (is_month()) { ?>\n									<h1 class=\"archive-title h2\">\n										<span><?php _e( 'Monthly Archives:', 'bonestheme' ); ?></span> <?php the_time('F Y'); ?>\n									</h1>\n\n							<?php } elseif (is_year()) { ?>\n									<h1 class=\"archive-title h2\">\n										<span><?php _e( 'Yearly Archives:', 'bonestheme' ); ?></span> <?php the_time('Y'); ?>\n									</h1>\n							<?php } ?>\n\n							<?php if (have_posts()) : ?>\n\n								<?php \n								$contador = 0;	\n								?>\n								<?php while (have_posts()) : the_post(); ?>\n									<?php \n									$contador++;\n									if($contador == 1){\n									?>\n										<div class=\"row\">\n									<?php \n									}\n									?>\n\n									<?php // Template de loop para archivos ?>\n									<div class=\"col-md-4\">\n										<?php get_template_part( 'parts/loop', 'archivos' ); ?>\n									</div>\n									<?php // Fin de Template de loop para archivos ?>\n\n									<?php \n									if($contador == 3){\n									?>\n										</div>\n									<?php \n									$contador = 0;\n									}		\n									?>\n								<?php endwhile; ?>\n								<?php \n								if(in_array($contador, array(1,2))){\n								?>\n									</div>\n								<?php\n								}\n								?>\n\n									<?php if ( function_exists('vb_pagination') ) {\n									  vb_pagination(); ?>\n									  \n									<?php } else { ?>\n										<nav class=\"wp-prev-next\">\n											<ul class=\"clearfix\">\n												<li class=\"prev-link\"><?php next_posts_link( __( '&laquo; Older Entries', 'bonestheme' )) ?></li>\n												<li class=\"next-link\"><?php previous_posts_link( __( 'Newer Entries &raquo;', 'bonestheme' )) ?></li>\n											</ul>\n										</nav>\n									<?php } ?>\n\n\n								<?php else : ?>\n\n									<article id=\"post-not-found\" class=\"hentry clearfix\">\n										<header class=\"article-header\">\n											<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>\n										</header>\n										<section class=\"entry-content\">\n											<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>\n										</section>\n										<footer class=\"article-footer\">\n												<p><?php _e( 'This is the error message in the archive.php template.', 'bonestheme' ); ?></p>\n										</footer>\n									</article>\n\n								<?php endif; ?>\n\n						</div>\n\n					<?php get_sidebar(); ?>\n\n				</div>\n\n			</div>\n\n<?php get_footer(); ?>\n",
+			"file": "archive.php",
+			"file_size": 3450,
+			"file_write_time": 1401147512000000,
+			"settings":
+			{
+				"buffer_size": 3393,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "parts/loop-archivos.php",
+			"settings":
+			{
+				"buffer_size": 1728,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "library/less/_base.less",
+			"settings":
+			{
+				"buffer_size": 15866,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "front-page.php",
+			"settings":
+			{
+				"buffer_size": 2877,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "search.php",
+			"settings":
+			{
+				"buffer_size": 2290,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "404.php",
+			"settings":
+			{
+				"buffer_size": 846,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "functions.php",
+			"settings":
+			{
+				"buffer_size": 8829,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "library/less/libs/bootstrap-3.1.1/variables.less",
+			"settings":
+			{
+				"buffer_size": 25811,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "parts/loop-destacados.php",
+			"settings":
+			{
+				"buffer_size": 788,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 167.0,
+		"selected_items":
+		[
+			[
+				"htm",
+				"Set Syntax: HTML"
+			],
+			[
+				"ht",
+				"Set Syntax: HTML"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"pakc",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 118.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/library/less/_base.less",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/parts/loop-archivos.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/parts/temp-social.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/front-page.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/library/less/_768up.less",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/library/less/_481up.less",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/library/less/_992up.less",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/library/less/login.less",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/footer.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/library/less/libs/bootstrap-3.1.1/variables.less",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/functions.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/header-front.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/sidebar-singles.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/single.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/taxonomy-custom_cat.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/404.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/archive-custom_type.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/archive.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/index.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/page-custom.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/page.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/search.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/single-custom_type.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/post-formats/format.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/post-formats/loop-archivos.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/post-formats/loop-destacados.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/library/bones.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/parts/loop-destacados.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/parts/loop-standard.php",
+		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/header.php",
+		"/Users/UrielOn/Repos/pep/library/css/style.css",
+		"/Users/UrielOn/Repos/pep/library/less/style.less",
+		"/Users/UrielOn/Repos/pep/library/less/ie.less",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/functions.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/_base.less",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/footer.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-social.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/front-page.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-videos.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/header-home.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/header.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-carruselAsoc.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/style.less",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/int-fichas.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/archive.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-calendario.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-header-top.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/loop-fichas.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/single-convocatorias_type.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/index.html",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-destacados.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-convocatoria.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/sidebar.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/custom-controls.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/_768up.less",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/_992up.less",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/_481up.less",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-banner-head.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-noticias.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/page-json.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/ie.less",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/css/ie.css",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/_481up.css",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/single.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/libs/bootsrap/variables.less",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/plugins/wp-editor-widget/assets/css/admin.css",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/loop-archivos.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/search.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/custom-post-type.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/archive-fichas_type.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/single-eventos.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/controles/select/post-type-dropdown-custom-control.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/controles/select/post-dropdown-custom-control.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/404.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/bones.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/plugins/ubermenu/custom/custom.css",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/page.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/single-fichas_type.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-config.dev.php",
+		"/Users/UrielOn/Repos/miseleccion2014WP/wp-config.php",
+		"/Users/UrielOn/Documents/Proyectos/Back/repos/culturareconstruccion/wp-content/themes/fotografica/item-lista-archive.php",
+		"/Users/UrielOn/Documents/Proyectos/Back/repos/culturareconstruccion/wp-content/themes/fotografica/item-lista.php",
+		"/Users/UrielOn/Documents/Proyectos/Back/repos/culturareconstruccion/wp-content/themes/fotografica/item-listabig.php",
+		"/Users/UrielOn/Documents/Proyectos/Back/repos/culturareconstruccion/wp-content/themes/fotografica/item-listabigColecciones.php",
+		"/Users/UrielOn/Documents/Proyectos/Back/repos/culturareconstruccion/wp-content/themes/fotografica/page-ajax.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/functions.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/custom-post-type.php",
+		"/Users/UrielOn/Downloads/fullcalendar-2.0.0-beta2/demos/php/utils.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-header-top.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/custom-controls.php",
+		"/Users/UrielOn/Documents/Proyectos/Back/repos/culturareconstruccion/wp-content/themes/fotografica/library/widgets/superwidget_Noticias.php",
+		"/Users/UrielOn/Documents/Proyectos/Back/repos/culturareconstruccion/wp-content/themes/fotografica/library/widgets/eventos/widget.php",
+		"/Users/UrielOn/Documents/Proyectos/Back/repos/culturareconstruccion/wp-content/themes/fotografica/functions.php",
+		"/Users/UrielOn/Documents/Proyectos/Back/repos/culturareconstruccion/wp-content/themes/fotografica/single-eventos.php",
+		"/Users/UrielOn/Downloads/fullcalendar-2.0.0-beta2/demos/php/get-events.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/page-json.php",
+		"/Users/UrielOn/Downloads/fullcalendar-2.0.0-beta2/demos/json.html",
+		"/Users/UrielOn/Downloads/fullcalendar-2.0.0-beta2/demos/json/events.json",
+		"/Users/UrielOn/Downloads/fullcalendar-2.0.0-beta2/demos/agenda-views.html",
+		"/Users/UrielOn/Downloads/fullcalendar-2.0.0-beta2/demos/basic-views.html",
+		"/Users/UrielOn/Downloads/fullcalendar-2.0.0-beta2/demos/default.html",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/footer.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/bones.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/header.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/404.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/_base.less",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/css/style.css",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/style.less",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/libs/bootsrap/variables.less",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/front-page.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/page-fullwidth.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/page.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-social.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-destacados.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/archive.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/single.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-calendario.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/loop-archivos.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/sidebar.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-convocatoria.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-carruselAsoc.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/class-wp-twitter-api.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/header-home.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/loop-fichas.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/search.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/single-fichas_type.php",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/404.html",
+		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/single-fichas.php"
+	],
+	"find":
+	{
+		"height": 49.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"navbar",
+			"hentry",
+			"<?php bones_page_navi(); ?>",
+			"byline",
+			"<i class=\"fa fa-pencil\"></i>",
+			"hentry",
+			".widget",
+			"bones_page_navi",
+			"vb_pagination",
+			"single",
+			"#main",
+			"main",
+			";\n",
+			"<div id=\"main\" class=\"col-md-8\" role=\"main\">",
+			"sidebar",
+			"navbar",
+			"float: left;",
+			"320x320",
+			"<div class=\"col-sm-2 cont-persona\">",
+			"<img class=\"img-responsive img-2\" src=\"http://placehold.it/200x200/000000\" alt=\"\">",
+			"<img class=\"img-responsive img-2\"  src=\"http://placehold.it/200x200\" alt=\"\">",
+			"<img class=\"img-responsive img-1\"  src=\"http://placehold.it/200x200\" alt=\"\">",
+			"<div class=\"col-sm-2 cont-persona\">\n								<article class=\"item-persona\">\n									<img class=\"img-responsive\" src=\"http://placehold.it/200x200\" alt=\"\">\n									<header>\n										<h4>\n											juanito banana <br>\n											<small>\n												Descripción\n											</small>\n										</h4>\n									</header>\n								</article>\n								<div class=\"contenthover\">\n									<img class=\"img-responsive\" src=\"http://placehold.it/200x200/000000\" alt=\"\">\n									<header>\n										<h4>\n											juanito banana <br>\n											<small>\n												Descripción\n											</small>\n										</h4>\n									</header>\n								</div>\n							</div>",
+			"<article",
+			"<h2 class=\"bg-gris\">",
+			"@container-tablet",
+			"introSeccion",
+			".png",
+			"class=\"item-premio\"",
+			"navbar-brand",
+			"1001",
+			"shadow",
+			".container",
+			".header",
+			"placehold.it",
+			"patrocinadoresSecundarios",
+			"newsHomeColUno",
+			" style='width:360px; height:100px;'",
+			"<img class=\"img-responsive\"",
+			"<a href=\"#\">",
+			"ficha-single",
+			"ficha-block",
+			"-2",
+			".widget",
+			".search",
+			"\n-",
+			"lorem",
+			"shadow",
+			"logo",
+			".footer",
+			"head-seccion",
+			"widgettitle",
+			".sidebar",
+			".footer",
+			"sidebar1",
+			"bones_wpsearch",
+			"customiser_demo_custom_section",
+			"custom_sections",
+			"equire_once dirname(__FILE__) . '/",
+			"WP_Customize_Control",
+			"comments",
+			";\n",
+			"379915922194",
+			"#Sub20Fem",
+			"parseDateTime",
+			"cache",
+			"calendario-caru",
+			"url",
+			"a.ic-facebook",
+			"vcard",
+			"Popovers",
+			" col-xs-6",
+			".bottom",
+			"popov",
+			"<dl class=\"dl-horizontal\">",
+			"co-xs-6",
+			"<div class=\"col-sm-3\">",
+			"pop",
+			"fichas",
+			"<img src=\"http://placehold.it/320x300\" alt=\"\">",
+			"Convocatorias",
+			"Custom Post",
+			"Custom Types",
+			"custom_post_example",
+			"custom_type",
+			"#banner",
+			"banner-1",
+			"banner-3",
+			".footer",
+			"$c",
+			"h3",
+			"h4",
+			".footer",
+			"banner",
+			"banner-3",
+			"contenido",
+			"soc",
+			"<img src=\"\">",
+			"estaban",
+			"<meta charset=\"UTF-8\">\n     <link href='https://fonts.googleapis.com/css?family=Quattrocento:400,700' rel='stylesheet' type='text/css'>\n    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">",
+			"<a href=\"terminos-y-condiciones.html\">Términos y condiciones</a>",
+			"solicita",
+			"fancybox-manual-b",
+			"#book1"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"<?php if ( function_exists('vb_pagination') ) {\n										  vb_pagination(); ?>\n										  \n										<?php } else { ?>\n											<nav class=\"wp-prev-next\">\n												<ul class=\"clearfix\">\n													<li class=\"prev-link\"><?php next_posts_link( __( '&laquo; Older Entries', 'bonestheme' )) ?></li>\n													<li class=\"next-link\"><?php previous_posts_link( __( 'Newer Entries &raquo;', 'bonestheme' )) ?></li>\n												</ul>\n											</nav>\n										<?php } ?>",
+			"<div id=\"main\" class=\"col-md-9\" role=\"main\">",
+			"320x400",
+			"<div class=\"col-sm-19 cont-persona\">",
+			"<img class=\"img-responsive img-2\" src=\"http://placehold.it/320x320/000000\" alt=\"\">",
+			"<img class=\"img-responsive img-2\"  src=\"http://placehold.it/320x320\" alt=\"\">",
+			"<img class=\"img-responsive img-1\"  src=\"http://placehold.it/320x320\" alt=\"\">",
+			"",
+			"<h2 class=\"bg-black txt-bg\">",
+			"",
+			"class=\"item-premio text-center\"",
+			"newsHomeColTres",
+			"newsHomeColDos",
+			"",
+			"<img class=\"img-responsive\" alt=\"logo_\"",
+			"<a href=\"#\" target=\"_blank\">",
+			"",
+			"footer-",
+			"equire_once dirname(__FILE__) . '/controles/",
+			"",
+			"<dl class=\"dl-horizontal ficha-list\">",
+			"col-xs-6",
+			"<div class=\"col-sm-3 co-xs-6\">",
+			"<img src=\"http://placehold.it/320x300\" alt=\"\" class=\"img-responsive\">",
+			"Fichas",
+			"Convocatoria",
+			"Convocatorias",
+			"convocatorias_post_type",
+			"convocatorias_type",
+			"$contador",
+			"h5",
+			"h3",
+			"<a><img src=\"\"></a>",
+			"",
+			"<a href=\"terminos-y-condiciones.html\">Términos y condiciones / <span>Terms and Conditions</span></a>"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "archive.php",
+					"settings":
+					{
+						"buffer_size": 3393,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3301,
+								1424
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 642.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "parts/loop-archivos.php",
+					"settings":
+					{
+						"buffer_size": 1728,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								528,
+								528
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "library/less/_base.less",
+					"settings":
+					{
+						"buffer_size": 15866,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4395,
+								4395
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LESS/LESS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2506.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 6,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "front-page.php",
+					"settings":
+					{
+						"buffer_size": 2877,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								824,
+								2758
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 774.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "library/less/_base.less",
+					"settings":
+					{
+						"buffer_size": 15866,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4089,
+								4089
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LESS/LESS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2171.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "search.php",
+					"settings":
+					{
+						"buffer_size": 2290,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								596,
+								596
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 568.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "404.php",
+					"settings":
+					{
+						"buffer_size": 846,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								512,
+								512
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "functions.php",
+					"settings":
+					{
+						"buffer_size": 8829,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								410,
+								410
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "library/less/libs/bootstrap-3.1.1/variables.less",
+					"settings":
+					{
+						"buffer_size": 25811,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10701,
+								10701
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LESS/LESS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 5291.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "parts/loop-destacados.php",
+					"settings":
+					{
+						"buffer_size": 788,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								788,
+								788
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 30.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.255979477612,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"dest",
+				"parts/loop-destacados.php"
+			],
+			[
+				"var",
+				"library/less/libs/bootstrap-3.1.1/variables.less"
+			],
+			[
+				"func",
+				"functions.php"
+			],
+			[
+				"sea",
+				"search.php"
+			],
+			[
+				"base",
+				"library/less/_base.less"
+			],
+			[
+				"loo",
+				"parts/loop-archivos.php"
+			],
+			[
+				"fron",
+				"front-page.php"
+			],
+			[
+				"ar",
+				"archive.php"
+			],
+			[
+				"arch",
+				"archive.php"
+			],
+			[
+				"header",
+				"header.php"
+			],
+			[
+				"fr",
+				"front-page.php"
+			],
+			[
+				"front",
+				"front-page.php"
+			],
+			[
+				"loop",
+				"parts/loop-archivos.php"
+			],
+			[
+				"sing",
+				"single.php"
+			],
+			[
+				"single",
+				"single.php"
+			],
+			[
+				"side",
+				"sidebar-singles.php"
+			],
+			[
+				"forma",
+				"post-formats/format.php"
+			],
+			[
+				"looop",
+				"post-formats/loop-destacados.php"
+			],
+			[
+				"768",
+				"library/less/_768up.less"
+			],
+			[
+				"bone",
+				"library/bones.php"
+			],
+			[
+				"",
+				"post-formats/loop-archivos.php"
+			],
+			[
+				"bas",
+				"library/less/_base.less"
+			],
+			[
+				"hea",
+				"header.php"
+			],
+			[
+				"vara",
+				"library/less/libs/bootstrap-3.1.1/variables.less"
+			],
+			[
+				"footer",
+				"footer.php"
+			],
+			[
+				"4",
+				"library/less/_481up.less"
+			],
+			[
+				"s",
+				"library/css/style.css"
+			],
+			[
+				"inde",
+				"index.html"
+			],
+			[
+				"variables",
+				"library/less/libs/bootstrap-3.1.1/variables.less"
+			],
+			[
+				"9",
+				"library/less/_992up.less"
+			],
+			[
+				"ie",
+				"library/less/ie.less"
+			],
+			[
+				"sty",
+				"library/less/style.less"
+			],
+			[
+				"scr",
+				"library/js/scripts.js"
+			],
+			[
+				"grid",
+				"library/less/libs/bootstrap-3.1.1/grid.less"
+			],
+			[
+				"style",
+				"library/less/style.less"
+			],
+			[
+				"panel",
+				"library/less/libs/bootstrap-3.1.1/panels.less"
+			],
+			[
+				"stye",
+				"library/css/style.css"
+			],
+			[
+				"7",
+				"library/less/_768up.less"
+			],
+			[
+				"nav",
+				"library/less/libs/bootstrap-3.1.1/navbar.less"
+			],
+			[
+				"76",
+				"miseleccionMX2014/library/less/_768up.less"
+			],
+			[
+				"he",
+				"miseleccionMX2014/header-home.php"
+			],
+			[
+				"bones",
+				"miseleccionMX2014/library/bones.php"
+			],
+			[
+				"vide",
+				"miseleccionMX2014/library/home-videos.php"
+			],
+			[
+				"b",
+				"miseleccionMX2014/library/less/_base.less"
+			],
+			[
+				"soc",
+				"miseleccionMX2014/library/home-social.php"
+			],
+			[
+				"asoc",
+				"miseleccionMX2014/library/home-carruselAsoc.php"
+			],
+			[
+				"page",
+				"miseleccionMX2014/page-json.php"
+			],
+			[
+				"not",
+				"miseleccionMX2014/library/home-noticias.php"
+			],
+			[
+				"banner",
+				"miseleccionMX2014/library/home-banner-head.php"
+			],
+			[
+				"top",
+				"miseleccionMX2014/library/home-header-top.php"
+			],
+			[
+				"aso",
+				"miseleccionMX2014/library/home-carruselAsoc.php"
+			],
+			[
+				"notii",
+				"miseleccionMX2014/library/home-noticias.php"
+			],
+			[
+				"cust",
+				"miseleccionMX2014/library/custom-controls.php"
+			],
+			[
+				"foot",
+				"miseleccionMX2014/footer.php"
+			],
+			[
+				"bnner",
+				"miseleccionMX2014/library/home-banner-head.php"
+			],
+			[
+				"head",
+				"miseleccionMX2014/header.php"
+			],
+			[
+				"hee",
+				"miseleccionMX2014/library/home-banner-head.php"
+			],
+			[
+				"custom-c",
+				"miseleccionMX2014/library/custom-controls.php"
+			],
+			[
+				"fun",
+				"miseleccionMX2014/functions.php"
+			],
+			[
+				"videos",
+				"miseleccionMX2014/library/home-videos.php"
+			],
+			[
+				"styl",
+				"miseleccionMX2014/library/less/style.less"
+			],
+			[
+				"con",
+				"miseleccionMX2014/library/home-convocatoria.php"
+			],
+			[
+				"_4",
+				"miseleccionMX2014/library/less/_481up.less"
+			],
+			[
+				"_9",
+				"miseleccionMX2014/library/less/_992up.less"
+			],
+			[
+				"convo",
+				"miseleccionMX2014/single-convocatorias_type.php"
+			],
+			[
+				"fichas",
+				"miseleccionMX2014/library/int-fichas.php"
+			],
+			[
+				"header-",
+				"miseleccionMX2014/library/home-header-top.php"
+			],
+			[
+				"cale",
+				"miseleccionMX2014/library/home-calendario.php"
+			],
+			[
+				"archi",
+				"miseleccionMX2014/archive.php"
+			],
+			[
+				"style.les",
+				"miseleccionMX2014/library/less/style.less"
+			],
+			[
+				"arche",
+				"miseleccionMX2014/archive-fichas_type.php"
+			],
+			[
+				"sin",
+				"miseleccionMX2014/single-fichas_type.php"
+			],
+			[
+				"archve",
+				"miseleccionMX2014/archive-fichas_type.php"
+			],
+			[
+				"lo",
+				"miseleccionMX2014/library/loop-fichas.php"
+			],
+			[
+				"arc",
+				"miseleccionMX2014/archive.php"
+			],
+			[
+				"cus",
+				"miseleccionMX2014/library/custom-post-type.php"
+			],
+			[
+				"archive",
+				"miseleccionMX2014/archive.php"
+			],
+			[
+				"calen",
+				"miseleccionMX2014/library/home-calendario.php"
+			],
+			[
+				"calenda",
+				"miseleccionMX2014/library/home-calendario.php"
+			],
+			[
+				"json",
+				"miseleccionMX2014/page-json.php"
+			],
+			[
+				"custom-p",
+				"miseleccionMX2014/library/custom-post-type.php"
+			],
+			[
+				"se",
+				"miseleccionMX2014/search.php"
+			],
+			[
+				"sear",
+				"miseleccionMX2014/search.php"
+			],
+			[
+				"noti",
+				"miseleccionMX2014/library/home-noticias.php"
+			],
+			[
+				"notici",
+				"miseleccionMX2014/library/home-noticias.php"
+			],
+			[
+				"noticias",
+				"miseleccionMX2014/library/home-noticias.php"
+			],
+			[
+				"home",
+				"miseleccionMX2014/library/home-destacados.php"
+			],
+			[
+				"int",
+				"miseleccionMX2014/library/int-fichas.php"
+			],
+			[
+				"fich",
+				"library/int-fichas.php"
+			],
+			[
+				"404",
+				"404.php"
+			],
+			[
+				"post-d",
+				"library/controles/select/post-dropdown-custom-control.php"
+			],
+			[
+				"postu",
+				"library/controles/select/post-type-dropdown-custom-control.php"
+			],
+			[
+				"custom-",
+				"library/custom-controls.php"
+			],
+			[
+				"sig",
+				"single.php"
+			],
+			[
+				"calendar",
+				"library/home-calendario.php"
+			],
+			[
+				"social",
+				"library/home-social.php"
+			],
+			[
+				"cusmto",
+				"library/custom-controls.php"
+			],
+			[
+				"page-",
+				"page-calendario-de-partidos.php"
+			],
+			[
+				"scrip",
+				"library/js/scripts.js"
+			],
+			[
+				"post",
+				"library/custom-post-type.php"
+			],
+			[
+				"soci",
+				"library/home-social.php"
+			],
+			[
+				"class",
+				"library/class-wp-twitter-api.php"
+			],
+			[
+				"car",
+				"library/home-carruselAsoc.php"
+			],
+			[
+				"heae",
+				"header.php"
+			],
+			[
+				"styles",
+				"library/css/style.css"
+			],
+			[
+				"f",
+				"footer.php"
+			],
+			[
+				"homr",
+				"library/home-header-top.php"
+			],
+			[
+				"vr",
+				"library/less/libs/bootsrap/variables.less"
+			],
+			[
+				"home-s",
+				"library/home-social.php"
+			],
+			[
+				"heade",
+				"header.php"
+			],
+			[
+				"sine",
+				"single.php"
+			],
+			[
+				"custmo",
+				"library/custom-post-type.php"
+			],
+			[
+				"pop",
+				"library/less/libs/bootsrap/popovers.less"
+			],
+			[
+				"hed",
+				"library/home-destacados.php"
+			],
+			[
+				"home-",
+				"library/home-social.php"
+			],
+			[
+				"regis",
+				"RegistroFacebook.html"
+			],
+			[
+				"fac",
+				"RegistroFacebook.html"
+			],
+			[
+				"gra",
+				"templates/Gracias.html"
+			],
+			[
+				"trivi",
+				"templates/TriviaInactiva.html"
+			],
+			[
+				"tri",
+				"templates/Trivia.html"
+			],
+			[
+				"reg",
+				"templates/Registro.html"
+			],
+			[
+				"regi",
+				"templates/Registro.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 245.0,
+	"status_bar_visible": true
+}
