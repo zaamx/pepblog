@@ -15,7 +15,7 @@ sidebars, comments, ect.
 require_once( 'library/bones.php' );
 
 // USE THIS TEMPLATE TO CREATE CUSTOM POST TYPES EASILY
-//require_once( 'library/custom-post-type.php' );
+require_once( 'library/custom-post-type.php' );
 
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
 // require_once( 'library/admin.php' );
@@ -76,6 +76,8 @@ if ( ! isset( $content_width ) ) {
 add_image_size( 'bones-thumb-600', 600, 150, true );
 add_image_size( 'bones-thumb-300', 300, 100, true );
 add_image_size( 'pep-thumb', 300, 200, true );
+add_image_size( 'pep-box', 320, 320, true );
+add_image_size( 'pep-boxh', 320, 400, true );
 
 /*
 to add more sizes, simply copy a line from above

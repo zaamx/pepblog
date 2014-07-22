@@ -4,80 +4,72 @@
 		"selected_items":
 		[
 			[
-				"fl",
-				"float"
-			],
-			[
-				"border",
-				"border-top"
-			],
-			[
-				"BA",
-				"background-repeat"
-			],
-			[
 				"brand",
-				"brand-success"
-			],
-			[
-				"font",
-				"font-size"
-			],
-			[
-				"tex",
-				"text-transform"
-			],
-			[
-				"text-",
-				"text-transform"
-			],
-			[
-				"text",
-				"text-align"
-			],
-			[
-				"fon",
-				"font-size"
-			],
-			[
-				"bac",
-				"background"
-			],
-			[
-				"marg",
-				"margin"
-			],
-			[
-				"rgb",
-				"rgba(r,g,b,a)"
-			],
-			[
-				"boder",
-				"border"
+				"brand-danger"
 			],
 			[
 				"padd",
-				"padding"
+				"padding-bottom"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"entr",
+				"entry_id"
+			],
+			[
+				"brand-",
+				"brand-warning"
 			],
 			[
 				"margin",
 				"margin"
 			],
 			[
-				"z-",
-				"z-index"
+				"rb",
+				"rgba(r,g,b,a)"
 			],
 			[
-				"gray-li",
+				"bac",
+				"background"
+			],
+			[
+				"bord",
+				"border-bottom"
+			],
+			[
+				"tex",
+				"text-decoration"
+			],
+			[
+				"gray-lig",
 				"gray-lighter"
 			],
 			[
-				"r",
-				"right"
+				"marg",
+				"margin"
 			],
 			[
-				"ba",
-				"background"
+				"rg",
+				"rgba()"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"list-s",
+				"list-style"
+			],
+			[
+				"gray-l",
+				"gray-light"
 			],
 			[
 				"mar",
@@ -85,116 +77,25 @@
 			],
 			[
 				"gray-dar",
-				"gray-dark"
+				"gray-darker"
 			],
 			[
-				"paddi",
-				"padding-top"
-			],
-			[
-				"gray-d",
-				"gray-dark"
-			],
-			[
-				"j",
-				"jQuery"
-			],
-			[
-				"print",
-				"print_r"
-			],
-			[
-				"wid",
-				"width"
-			],
-			[
-				"wi",
-				"width"
-			],
-			[
-				"d",
-				"display"
-			],
-			[
-				"cont",
-				"contID-100"
-			],
-			[
-				"fic",
-				"fichaInfo"
-			],
-			[
-				"pop",
-				"pops"
-			],
-			[
-				"list-s",
-				"list-style"
-			],
-			[
-				"boo",
-				"bottom"
+				"r",
+				"right"
 			],
 			[
 				"pos",
 				"position"
-			],
-			[
-				"convo",
-				"Convocatorias"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"contents": "<?php get_header(); ?>\n\n			<div id=\"content\" class=\"container\">\n\n				<div id=\"inner-content\" class=\"row\">\n\n						<div id=\"main\" class=\"col-md-9\" role=\"main\">\n\n							<?php if (is_category()) { ?>\n								<h1 class=\"archive-title h2\">\n									<span><?php _e( 'Posts Categorized:', 'bonestheme' ); ?></span> <?php single_cat_title(); ?>\n								</h1>\n\n							<?php } elseif (is_tag()) { ?>\n								<h1 class=\"archive-title h2\">\n									<span><?php _e( 'Posts Tagged:', 'bonestheme' ); ?></span> <?php single_tag_title(); ?>\n								</h1>\n\n							<?php } elseif (is_author()) {\n								global $post;\n								$author_id = $post->post_author;\n							?>\n								<h1 class=\"archive-title h2\">\n\n									<span><?php _e( 'Posts By:', 'bonestheme' ); ?></span> <?php the_author_meta('display_name', $author_id); ?>\n\n								</h1>\n							<?php } elseif (is_day()) { ?>\n								<h1 class=\"archive-title h2\">\n									<span><?php _e( 'Daily Archives:', 'bonestheme' ); ?></span> <?php the_time('l, F j, Y'); ?>\n								</h1>\n\n							<?php } elseif (is_month()) { ?>\n									<h1 class=\"archive-title h2\">\n										<span><?php _e( 'Monthly Archives:', 'bonestheme' ); ?></span> <?php the_time('F Y'); ?>\n									</h1>\n\n							<?php } elseif (is_year()) { ?>\n									<h1 class=\"archive-title h2\">\n										<span><?php _e( 'Yearly Archives:', 'bonestheme' ); ?></span> <?php the_time('Y'); ?>\n									</h1>\n							<?php } ?>\n\n							<?php if (have_posts()) : ?>\n\n								<?php \n								$contador = 0;	\n								?>\n								<?php while (have_posts()) : the_post(); ?>\n									<?php \n									$contador++;\n									if($contador == 1){\n									?>\n										<div class=\"row\">\n									<?php \n									}\n									?>\n\n									<?php // Template de loop para archivos ?>\n									<div class=\"col-md-4\">\n										<?php get_template_part( 'parts/loop', 'archivos' ); ?>\n									</div>\n									<?php // Fin de Template de loop para archivos ?>\n\n									<?php \n									if($contador == 3){\n									?>\n										</div>\n									<?php \n									$contador = 0;\n									}		\n									?>\n								<?php endwhile; ?>\n								<?php \n								if(in_array($contador, array(1,2))){\n								?>\n									</div>\n								<?php\n								}\n								?>\n\n									<?php if ( function_exists('vb_pagination') ) {\n									  vb_pagination(); ?>\n									  \n									<?php } else { ?>\n										<nav class=\"wp-prev-next\">\n											<ul class=\"clearfix\">\n												<li class=\"prev-link\"><?php next_posts_link( __( '&laquo; Older Entries', 'bonestheme' )) ?></li>\n												<li class=\"next-link\"><?php previous_posts_link( __( 'Newer Entries &raquo;', 'bonestheme' )) ?></li>\n											</ul>\n										</nav>\n									<?php } ?>\n\n\n								<?php else : ?>\n\n									<article id=\"post-not-found\" class=\"hentry clearfix\">\n										<header class=\"article-header\">\n											<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>\n										</header>\n										<section class=\"entry-content\">\n											<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>\n										</section>\n										<footer class=\"article-footer\">\n												<p><?php _e( 'This is the error message in the archive.php template.', 'bonestheme' ); ?></p>\n										</footer>\n									</article>\n\n								<?php endif; ?>\n\n						</div>\n\n					<?php get_sidebar(); ?>\n\n				</div>\n\n			</div>\n\n<?php get_footer(); ?>\n",
-			"file": "archive.php",
-			"file_size": 3450,
-			"file_write_time": 1401147512000000,
+			"file": "library/custom-post-type.php",
 			"settings":
 			{
-				"buffer_size": 3393,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "parts/loop-archivos.php",
-			"settings":
-			{
-				"buffer_size": 1728,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "library/less/_base.less",
-			"settings":
-			{
-				"buffer_size": 15866,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "front-page.php",
-			"settings":
-			{
-				"buffer_size": 2877,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "search.php",
-			"settings":
-			{
-				"buffer_size": 2290,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "404.php",
-			"settings":
-			{
-				"buffer_size": 846,
+				"buffer_size": 6505,
 				"line_ending": "Unix"
 			}
 		},
@@ -202,7 +103,71 @@
 			"file": "functions.php",
 			"settings":
 			{
-				"buffer_size": 8829,
+				"buffer_size": 8918,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "page-front-video.php",
+			"settings":
+			{
+				"buffer_size": 1363,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/pedrocerilla/Library/Caches/Cleanup At Startup/Transmit/B66029DC-C00E-4FED-B9F8-CB51CD55B652/Home.blade.php",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "page-front-introcta.php",
+			"settings":
+			{
+				"buffer_size": 1007,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "page-front-carrousel.php",
+			"settings":
+			{
+				"buffer_size": 2254,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "page-front-premios.php",
+			"settings":
+			{
+				"buffer_size": 4468,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "page-front-bases.php",
+			"settings":
+			{
+				"buffer_size": 1590,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "page-front-jurado.php",
+			"settings":
+			{
+				"buffer_size": 2068,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/pedrocerilla/Desktop/category-capsulas-coyunturales.php",
+			"settings":
+			{
+				"buffer_size": 3453,
 				"line_ending": "Unix"
 			}
 		},
@@ -215,10 +180,10 @@
 			}
 		},
 		{
-			"file": "parts/loop-destacados.php",
+			"file": "404.php",
 			"settings":
 			{
-				"buffer_size": 788,
+				"buffer_size": 846,
 				"line_ending": "Unix"
 			}
 		}
@@ -226,19 +191,27 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 167.0,
+		"height": 287.0,
 		"selected_items":
 		[
-			[
-				"htm",
-				"Set Syntax: HTML"
-			],
 			[
 				"ht",
 				"Set Syntax: HTML"
 			],
 			[
-				"html",
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"paca",
+				"Package Control: Install Package"
+			],
+			[
+				"htm",
 				"Set Syntax: HTML"
 			],
 			[
@@ -246,19 +219,23 @@
 				"Set Syntax: CSS"
 			],
 			[
-				"pack",
+				"pal",
 				"Package Control: Install Package"
 			],
 			[
-				"pakc",
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"pack",
 				"Package Control: Install Package"
 			]
 		],
-		"width": 449.0
+		"width": 575.0
 	},
 	"console":
 	{
-		"height": 118.0
+		"height": 125.0
 	},
 	"distraction_free":
 	{
@@ -271,144 +248,146 @@
 	},
 	"file_history":
 	[
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/library/less/_base.less",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/parts/loop-archivos.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/parts/temp-social.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/front-page.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/library/less/_768up.less",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/library/less/_481up.less",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/library/less/_992up.less",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/library/less/login.less",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/footer.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/library/less/libs/bootstrap-3.1.1/variables.less",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/functions.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/header-front.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/sidebar-singles.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/single.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/taxonomy-custom_cat.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/404.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/archive-custom_type.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/archive.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/index.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/page-custom.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/page.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/search.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/single-custom_type.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/post-formats/format.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/post-formats/loop-archivos.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/post-formats/loop-destacados.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/library/bones.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/parts/loop-destacados.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/parts/loop-standard.php",
-		"/Users/UrielOn/Repos/pepblog/wp-content/themes/ok/header.php",
-		"/Users/UrielOn/Repos/pep/library/css/style.css",
-		"/Users/UrielOn/Repos/pep/library/less/style.less",
-		"/Users/UrielOn/Repos/pep/library/less/ie.less",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/functions.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/_base.less",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/footer.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-social.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/front-page.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-videos.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/header-home.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/header.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-carruselAsoc.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/style.less",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/int-fichas.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/archive.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-calendario.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-header-top.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/loop-fichas.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/single-convocatorias_type.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/index.html",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-destacados.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-convocatoria.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/sidebar.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/custom-controls.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/_768up.less",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/_992up.less",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/_481up.less",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-banner-head.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-noticias.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/page-json.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/ie.less",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/css/ie.css",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/_481up.css",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/single.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/libs/bootsrap/variables.less",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/plugins/wp-editor-widget/assets/css/admin.css",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/loop-archivos.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/search.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/custom-post-type.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/archive-fichas_type.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/single-eventos.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/controles/select/post-type-dropdown-custom-control.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/controles/select/post-dropdown-custom-control.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/404.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/bones.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/plugins/ubermenu/custom/custom.css",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/page.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/single-fichas_type.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-config.dev.php",
-		"/Users/UrielOn/Repos/miseleccion2014WP/wp-config.php",
-		"/Users/UrielOn/Documents/Proyectos/Back/repos/culturareconstruccion/wp-content/themes/fotografica/item-lista-archive.php",
-		"/Users/UrielOn/Documents/Proyectos/Back/repos/culturareconstruccion/wp-content/themes/fotografica/item-lista.php",
-		"/Users/UrielOn/Documents/Proyectos/Back/repos/culturareconstruccion/wp-content/themes/fotografica/item-listabig.php",
-		"/Users/UrielOn/Documents/Proyectos/Back/repos/culturareconstruccion/wp-content/themes/fotografica/item-listabigColecciones.php",
-		"/Users/UrielOn/Documents/Proyectos/Back/repos/culturareconstruccion/wp-content/themes/fotografica/page-ajax.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/functions.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/custom-post-type.php",
-		"/Users/UrielOn/Downloads/fullcalendar-2.0.0-beta2/demos/php/utils.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-header-top.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/custom-controls.php",
-		"/Users/UrielOn/Documents/Proyectos/Back/repos/culturareconstruccion/wp-content/themes/fotografica/library/widgets/superwidget_Noticias.php",
-		"/Users/UrielOn/Documents/Proyectos/Back/repos/culturareconstruccion/wp-content/themes/fotografica/library/widgets/eventos/widget.php",
-		"/Users/UrielOn/Documents/Proyectos/Back/repos/culturareconstruccion/wp-content/themes/fotografica/functions.php",
-		"/Users/UrielOn/Documents/Proyectos/Back/repos/culturareconstruccion/wp-content/themes/fotografica/single-eventos.php",
-		"/Users/UrielOn/Downloads/fullcalendar-2.0.0-beta2/demos/php/get-events.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/page-json.php",
-		"/Users/UrielOn/Downloads/fullcalendar-2.0.0-beta2/demos/json.html",
-		"/Users/UrielOn/Downloads/fullcalendar-2.0.0-beta2/demos/json/events.json",
-		"/Users/UrielOn/Downloads/fullcalendar-2.0.0-beta2/demos/agenda-views.html",
-		"/Users/UrielOn/Downloads/fullcalendar-2.0.0-beta2/demos/basic-views.html",
-		"/Users/UrielOn/Downloads/fullcalendar-2.0.0-beta2/demos/default.html",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/footer.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/bones.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/header.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/404.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/_base.less",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/css/style.css",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/style.less",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/less/libs/bootsrap/variables.less",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/front-page.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/page-fullwidth.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/page.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-social.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-destacados.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/archive.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/single.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-calendario.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/loop-archivos.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/sidebar.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-convocatoria.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/home-carruselAsoc.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/class-wp-twitter-api.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/header-home.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/library/loop-fichas.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/search.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/single-fichas_type.php",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/404.html",
-		"/Volumes/Seagate Expansion Drive/miseleccion2014WP/wp-content/themes/miseleccionMX2014/single-fichas.php"
+		"/Users/pedrocerilla/Desktop/category-capsulas-coyunturales.php",
+		"/Users/pedrocerilla/Repos/colpos/wp-content/themes/colpos/header-home.php",
+		"/Users/pedrocerilla/Library/Application Support/Sublime Text 2/Packages/User/wpquery.sublime-snippet",
+		"/Users/pedrocerilla/Repos/pepnoticias/wp-content/themes/ok/page-front-noticias.php",
+		"/Users/pedrocerilla/Repos/pepnoticias/wp-content/themes/ok/page-front-premios.php",
+		"/Users/pedrocerilla/Repos/pepnoticias/wp-content/themes/ok/page-front-contador.php",
+		"/Users/pedrocerilla/Repos/pepnoticias/wp-content/themes/ok/page-front-introcta.php",
+		"/Users/pedrocerilla/Repos/pepnoticias/wp-content/themes/ok/page-front-video.php",
+		"/Users/pedrocerilla/Repos/pepnoticias/wp-content/themes/ok/page-front-carrousel.php",
+		"/Users/pedrocerilla/Repos/pepnoticias/wp-content/themes/ok/library/less/libs/bootstrap-3.1.1/variables.less",
+		"/Users/pedrocerilla/Library/Caches/Cleanup At Startup/Transmit/C761550B-F15A-4D1A-A9FD-2668D4A430DD/index.html",
+		"/Users/pedrocerilla/Repos/pepnoticias/wp-content/themes/ok/library/less/libs/bootstrap-3.1.1/buttons.less",
+		"/Users/pedrocerilla/Library/Caches/Cleanup At Startup/Transmit/FEA1ADD9-A03F-4CF4-A376-05351BAA411A/convocatoria.php",
+		"/Users/pedrocerilla/Library/Caches/Cleanup At Startup/Transmit/DE20D916-DF4E-40C9-9F96-9827D648319B/Home.blade.php",
+		"/Users/pedrocerilla/Library/Caches/Cleanup At Startup/Transmit/0CA30C62-B31E-4281-AF68-52AB4160D0A3/wp-config.php",
+		"/Users/pedrocerilla/Documents/Proyectos/PEP/Datos Server PEP",
+		"/Users/pedrocerilla/Library/Caches/Cleanup At Startup/Transmit/F796073D-5B99-4E93-80DD-E29C29CDBBAE/ranking-medallas.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/partidos.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/notifi-pred.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/pred-form.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/activacion-paso3.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/library/less/_base.less",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/index.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/entrar.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/recuperar.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/head.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/registro.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/activacion-paso2.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/activacion-paso1.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/perfil2.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/partido.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/politicas.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/terminos.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/head-partido.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/head-interiores.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/miembros.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/actualizar-perfil.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/actualizar-cuenta.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/notifi-reta.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/prediccion-hecha.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/comentariosajax.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/perfil-comentarios.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/perfil.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/library/js/scripts.js",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/part-partido.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/ranking.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/medallas.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/ranking-medallas.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/perfil-sidebar.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/part-insigniasSB.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/_totalMedallasSB.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/part-puntosSB.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/_totalSB.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/part-ptsPartido.html",
+		"/Users/pedrocerilla/Library/Application Support/Sublime Text 2/Packages/User/stash.sublime-snippet",
+		"/Users/pedrocerilla/Library/Application Support/Sublime Text 2/Packages/User/acento.sublime-snippet",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/premios.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/puntos-asignacion.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/puntos-predicciones.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/puntos.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/que-es.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/reglas.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/_amateur.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/asertamac.sublime-workspace",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/foot2.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/actualizar-avatar.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/contacto.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/error-perfil.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/gracias.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/library/less/_768up.less",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/library/less/_992up.less",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/library/less/libs/bootstrap-3.1.1/variables.less",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/library/less/libs/bootstrap-3.1.1/forms.less",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/foot.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/part-puntos.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/part-insignias.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/rank.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/library/less/libs/bootstrap-3.1.1/pager.less",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/_totalMedallas.html",
+		"/Users/pedrocerilla/Library/Caches/Cleanup At Startup/Transmit/A7807065-8ABE-4BBE-A131-4C6FC6FB0959/config.php",
+		"/Users/pedrocerilla/Repos/pepblog/wp-content/themes/ok/front-page.php",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/_total.html",
+		"/Volumes/Seagate Expansion Drive/Clicker/Repos/miseleccion2014WP/wp-content/themes/miseleccionMX2014/page-json.php",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/library/less/_481up.less",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/datosmail.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/user_inc.group/profile_column.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/user_main.group/members.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/user_main.group/search_results.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/aserta.sublime-workspace",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/library/less/libs/bootstrap-3.1.1/theme.less",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/library/css/style.css",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/mensajes.html",
+		"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/index.html",
+		"/home/alonso/Descargas/slick-master/index.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/aserta.sublime-workspace",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/user_main.group/update_avatar_photo.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/sitio.group/foot.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/user_inc.group/profile_column.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/user_main.group/profile.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/user_main.group/update_profile.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/user_main.group/members.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/user_inc.group/control_column.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/user_main.group/update_account.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/sitio.group/error-perfil.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/user_inc.group/error_template.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/sitio.group/actualizar-avatar.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/user_inc.group/guest_column.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/sitio.group/ranking.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/sitio.group/partido.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/user_inc.group/index.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/sitio.group/medallas.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/sitio.group/ranking-medallas.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/library/less/_base.less",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/sitio.group/index.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/sitio.group/partidos.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/sitio.group/part-partido.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/sitio.group/perfil.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/sitio.group/head.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/sitio.group/gracias.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/user_main.group/index.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/user_inc.group/header.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/sitio.group/head-interiores.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/sitio.group/config.prod.php",
+		"/home/alonso/public_html/quinela/system/expressionengine/config/config.php",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/sitio.group/partido-int.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/library/less/libs/bootstrap-3.1.1/variables.less",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/sitio.group/miembros.html",
+		"/home/alonso/public_html/quinela/themes/site_themes/default_site/library/less/style.less"
 	],
 	"find":
 	{
-		"height": 49.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
 		"height": 0.0,
 		"where_history":
 		[
+			"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/library",
+			"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group",
 			""
 		]
 	},
@@ -417,110 +396,117 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"fichasInt",
+			"sbSubtitulo",
+			"basePost",
+			"premPost",
+			"aria-labelledby=\"myModalLabel\"",
+			"indCar",
+			"ctaHome",
+			"numID",
+			"carousel-example-generic",
+			"videoHome",
+			".php",
+			":",
+			"orange",
+			"no coi",
+			"{/exp:channel:entries}",
+			"IDcomentariosTitle",
+			"IDcomentarios",
+			"gracias",
+			"#A94442",
+			"@state-warning-text",
+			"has-error",
+			"has-error .help-block,",
+			"bootstrap-3.1.1",
+			"{embed=\"sitio/foot\"}",
+			"sitio/perfil",
+			"{path=sitio/perfil}",
+			"sitio/perfil",
+			"href=\"{path='site_index'}/sitio/perfil/",
+			"sitio/perfil",
+			"php",
+			"idBadgeAsoc",
+			"idBadgeAsocN",
+			"stash",
+			"idBadgeAsoc",
+			"<b>0 </b><span>Puntos</span>",
+			"Upload a New Avatar:",
+			"You currently do not have an avatar uploaded.",
+			"Current Avatar:",
+			"Fill in or edit the fields below to update your profile:",
+			"<span>This user has not posted any entries.</span>",
+			"this user",
+			"Medallas",
+			"<b>15 </b><span>Insignias</span>",
+			"<b>6000 </b><span>Puntos</span> ",
+			"partido_rel:resultado_de_partido",
+			"partido_rel:marcador_visitante",
+			"partido_rel:marcador_local",
+			"<b>15 </b><span>Medallas</span> ",
+			"ptsResults",
+			"Badges",
+			"Ver lista de miembro",
+			"¿Ya te registraste? Hazlo ahora",
+			"badges",
+			"click",
+			"[$i]",
+			"\">\n",
+			"local",
+			"superadmin",
+			"<h3>",
+			"color",
+			"script",
+			"{site_url}/themes/site_themes/default_site/library/images/big_horns.jpg",
+			"img.item-img",
+			"disable=\"categories|member_data|pagination\"",
+			"|category_fields",
+			"text-shadow",
+			"modal",
+			"modalInstrucciones",
+			"home-ingreso",
+			"text-shadow",
+			"dropshadow",
 			"navbar",
-			"hentry",
-			"<?php bones_page_navi(); ?>",
-			"byline",
-			"<i class=\"fa fa-pencil\"></i>",
-			"hentry",
-			".widget",
-			"bones_page_navi",
-			"vb_pagination",
-			"single",
-			"#main",
-			"main",
-			";\n",
-			"<div id=\"main\" class=\"col-md-8\" role=\"main\">",
-			"sidebar",
-			"navbar",
-			"float: left;",
-			"320x320",
-			"<div class=\"col-sm-2 cont-persona\">",
-			"<img class=\"img-responsive img-2\" src=\"http://placehold.it/200x200/000000\" alt=\"\">",
-			"<img class=\"img-responsive img-2\"  src=\"http://placehold.it/200x200\" alt=\"\">",
-			"<img class=\"img-responsive img-1\"  src=\"http://placehold.it/200x200\" alt=\"\">",
-			"<div class=\"col-sm-2 cont-persona\">\n								<article class=\"item-persona\">\n									<img class=\"img-responsive\" src=\"http://placehold.it/200x200\" alt=\"\">\n									<header>\n										<h4>\n											juanito banana <br>\n											<small>\n												Descripción\n											</small>\n										</h4>\n									</header>\n								</article>\n								<div class=\"contenthover\">\n									<img class=\"img-responsive\" src=\"http://placehold.it/200x200/000000\" alt=\"\">\n									<header>\n										<h4>\n											juanito banana <br>\n											<small>\n												Descripción\n											</small>\n										</h4>\n									</header>\n								</div>\n							</div>",
-			"<article",
-			"<h2 class=\"bg-gris\">",
-			"@container-tablet",
-			"introSeccion",
-			".png",
-			"class=\"item-premio\"",
-			"navbar-brand",
-			"1001",
-			"shadow",
-			".container",
-			".header",
-			"placehold.it",
-			"patrocinadoresSecundarios",
-			"newsHomeColUno",
-			" style='width:360px; height:100px;'",
-			"<img class=\"img-responsive\"",
-			"<a href=\"#\">",
-			"ficha-single",
-			"ficha-block",
-			"-2",
-			".widget",
-			".search",
-			"\n-",
-			"lorem",
-			"shadow",
-			"logo",
-			".footer",
-			"head-seccion",
-			"widgettitle",
-			".sidebar",
-			".footer",
-			"sidebar1",
-			"bones_wpsearch",
-			"customiser_demo_custom_section",
-			"custom_sections",
-			"equire_once dirname(__FILE__) . '/",
-			"WP_Customize_Control",
-			"comments",
-			";\n",
-			"379915922194",
-			"#Sub20Fem",
-			"parseDateTime",
-			"cache",
-			"calendario-caru",
-			"url",
-			"a.ic-facebook",
-			"vcard",
-			"Popovers",
-			" col-xs-6",
-			".bottom",
-			"popov",
-			"<dl class=\"dl-horizontal\">",
-			"co-xs-6",
-			"<div class=\"col-sm-3\">",
-			"pop",
-			"fichas",
-			"<img src=\"http://placehold.it/320x300\" alt=\"\">",
-			"Convocatorias",
-			"Custom Post",
-			"Custom Types",
-			"custom_post_example",
-			"custom_type",
-			"#banner",
-			"banner-1",
-			"banner-3",
-			".footer",
-			"$c",
+			"ingreso",
+			"color: 				#000;",
+			"color:				#000;",
+			"<img src=\"{site_url}/themes/site_themes/default_site/library/images/LOGO_VERTICAL_FONDO_CLARO.png\">",
+			"<div class=\"form-group\">",
+			"{exp:channel:entries channel=\"partidos\" search:fecha=\"sáb 14 de jun de 14\" orderby=\"fecha\" sort=\"asc\" limit=\"4\" paginate=\"bottom\"}",
+			"disable=\"categories|member_data|pagination|category_fields\"",
+			"ite",
+			"Anota {equipo_local:nombre_de_pais}",
+			"visit",
+			"local",
+			"id_partido",
+			"php",
+			"{exp:user:theme_folder_url}code_pack/images/icon_profile.gif",
+			"green",
+			"headings",
+			"user_inc/error_template",
+			"id=\"wrapper\"",
+			"{member_id}",
+			"pre_id_de_usuario",
+			"gana",
+			"/home/user/example.com/",
+			"http://example.com/",
+			"{equipo_visitante}",
+			"\"{equipo_visitante}\"",
+			" \"{equipo_visitante}\"",
+			"<div class=\"col-md-3\">\n							<article class=\"text-center item-partido\">\n								<div class=\"row\">\n									<div class=\"col-sm-6 col-sm-offset-3 text-center\">\n										<img src=\"http://placehold.it/50x50\" class=\"img-circle\"alt=\"\">\n									</div>\n								</div>\n								<header >\n									<div class=\"row\">\n										<div class=\"col-sm-6 text-center\">\n											{equipo_local} <br>\n											<img src=\"http://placehold.it/100x100\" class=\"img-circle img-responsive\"alt=\"\">\n										</div>\n										<div class=\"col-sm-6 text-center\">\n											{equipo_visitante} <br>\n											<img src=\"http://placehold.it/100x100\" class=\"img-circle img-responsive\"alt=\"\">\n										</div>\n									</div>\n									<div class=\"row\">\n										<b>Grupo A</b>\n										<p>\n											Arena Sao Paoulo\n										</p>\n										<p>\n											{fecha_de_partido format=\"%Y %m %d\"}\n										</p>\n									</div>\n									<div class=\"row\">\n										<div class=\"col-sm-12\">\n											<h3><i class=\"fa fa-star-o\"></i>  8, 000 puntos</h3>\n										</div>\n									</div>\n								</header>\n								<footer>\n									<a class=\"btn btn-success\" href=\"{url_title_path='sitio/partido'}\">PREDECIR</a>\n								</footer>\n							</article>\n						</div>",
+			"		  						\n",
+			"<div class=\"col-sm-4\">",
+			"<img src=\"http://placehold.it/350x250\" class=\"img-responsive\" alt=\"\">",
 			"h3",
-			"h4",
-			".footer",
-			"banner",
-			"banner-3",
-			"contenido",
-			"soc",
-			"<img src=\"\">",
-			"estaban",
-			"<meta charset=\"UTF-8\">\n     <link href='https://fonts.googleapis.com/css?family=Quattrocento:400,700' rel='stylesheet' type='text/css'>\n    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">",
-			"<a href=\"terminos-y-condiciones.html\">Términos y condiciones</a>",
-			"solicita",
-			"fancybox-manual-b",
-			"#book1"
+			"  ",
+			";\n",
+			"script",
+			"<article class=\"text-center\">",
+			"modal",
+			"@border-radius-base",
+			"modal",
+			"7"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -528,41 +514,53 @@
 		"regex": false,
 		"replace_history":
 		[
-			"<?php if ( function_exists('vb_pagination') ) {\n										  vb_pagination(); ?>\n										  \n										<?php } else { ?>\n											<nav class=\"wp-prev-next\">\n												<ul class=\"clearfix\">\n													<li class=\"prev-link\"><?php next_posts_link( __( '&laquo; Older Entries', 'bonestheme' )) ?></li>\n													<li class=\"next-link\"><?php previous_posts_link( __( 'Newer Entries &raquo;', 'bonestheme' )) ?></li>\n												</ul>\n											</nav>\n										<?php } ?>",
-			"<div id=\"main\" class=\"col-md-9\" role=\"main\">",
-			"320x400",
-			"<div class=\"col-sm-19 cont-persona\">",
-			"<img class=\"img-responsive img-2\" src=\"http://placehold.it/320x320/000000\" alt=\"\">",
-			"<img class=\"img-responsive img-2\"  src=\"http://placehold.it/320x320\" alt=\"\">",
-			"<img class=\"img-responsive img-1\"  src=\"http://placehold.it/320x320\" alt=\"\">",
+			"juradoPost",
+			"sbSecundaria",
+			"juradoPost",
+			"basePost",
 			"",
-			"<h2 class=\"bg-black txt-bg\">",
+			"premPost",
+			"contCar",
+			"indCar",
+			"carousel-pep-home",
+			"ctaHome",
 			"",
-			"class=\"item-premio text-center\"",
-			"newsHomeColTres",
-			"newsHomeColDos",
+			"bootstrap-3",
+			"{embed=\"sitio/foot2\"}",
+			"{path=sitio/perfil2}",
+			"href=\"{path='site_index'}/sitio/perfil2/",
+			"{embed=\"sitio/part-puntos\" id_usuario=\"{member_id}\"}",
+			"Carga una nueva foto:",
+			"Actualmente no tienes una imagen de perfil.",
+			"Tu foto: ",
+			"Llena o edita los campos abajo, para actualizar tu perfil:",
+			"<span>El usuario aun no ha jugado.</span>",
+			"<b>0 </b><span>Insignias</span>",
+			"<b>0 </b><span>Puntos</span>",
+			"<b>15 </b><span>Insignias</span> ",
+			"Insignias",
+			"Listado de participantes",
+			"¿No te haz registrado? ¡Hazlo ahora!",
+			"insignias",
 			"",
-			"<img class=\"img-responsive\" alt=\"logo_\"",
-			"<a href=\"#\" target=\"_blank\">",
+			"<h3 class=\"text-center\">",
+			"{site_url}/themes/site_themes/default_site/library/images/default-user.jpg",
+			"paginate=\"bottom\"",
 			"",
-			"footer-",
-			"equire_once dirname(__FILE__) . '/controles/",
+			"color:				#fff;",
+			"<img src=\"{site_url}/themes/site_themes/default_site/library/images/LOGO_HOR_FONDO_CLARO.png\">",
+			"<div class=\"form-group has-feedback\">",
+			"{exp:channel:entries channel=\"partidos\" search:fecha=\"sáb 14 de jun de 14\" orderby=\"fecha\" sort=\"asc\" limit=\"4\" disable=\"categories|member_data|pagination|category_fields\"}",
+			"{site_url}/themes/site_themes/default_site/library/images/big_horns.jpg",
+			"sitio/error-perfil",
+			"{logged_in_member_id}",
+			"/home/zaa/dev.zaa.mx/quinela/",
+			"http://www.dev.zaa.mx/quinela",
 			"",
-			"<dl class=\"dl-horizontal ficha-list\">",
-			"col-xs-6",
-			"<div class=\"col-sm-3 co-xs-6\">",
-			"<img src=\"http://placehold.it/320x300\" alt=\"\" class=\"img-responsive\">",
-			"Fichas",
-			"Convocatoria",
-			"Convocatorias",
-			"convocatorias_post_type",
-			"convocatorias_type",
-			"$contador",
-			"h5",
-			"h3",
-			"<a><img src=\"\"></a>",
-			"",
-			"<a href=\"terminos-y-condiciones.html\">Términos y condiciones / <span>Terms and Conditions</span></a>"
+			"<div class=\"col-sm-3 text-center\">",
+			"<img src=\"http://placehold.it/150x150\" class=\"img-circle\" alt=\"\">",
+			"h4",
+			"<article class=\"text-center item-partido\">"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -573,50 +571,23 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 12,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "archive.php",
+					"file": "library/custom-post-type.php",
 					"settings":
 					{
-						"buffer_size": 3393,
+						"buffer_size": 6505,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3301,
-								1424
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 642.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "parts/loop-archivos.php",
-					"settings":
-					{
-						"buffer_size": 1728,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								528,
-								528
+								4877,
+								4877
 							]
 						],
 						"settings":
@@ -631,52 +602,47 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "library/less/_base.less",
+					"buffer": 1,
+					"file": "functions.php",
 					"settings":
 					{
-						"buffer_size": 15866,
+						"buffer_size": 8918,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4395,
-								4395
+								2201,
+								2201
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/LESS/LESS.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2506.0,
+						"translation.y": 823.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 6,
-			"sheets":
-			[
+				},
 				{
-					"buffer": 3,
-					"file": "front-page.php",
+					"buffer": 2,
+					"file": "page-front-video.php",
 					"settings":
 					{
-						"buffer_size": 2877,
+						"buffer_size": 1363,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								824,
-								2758
+								326,
+								326
 							]
 						],
 						"settings":
@@ -685,52 +651,80 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 774.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "library/less/_base.less",
+					"buffer": 3,
+					"file": "/Users/pedrocerilla/Library/Caches/Cleanup At Startup/Transmit/B66029DC-C00E-4FED-B9F8-CB51CD55B652/Home.blade.php",
 					"settings":
 					{
-						"buffer_size": 15866,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4089,
-								4089
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/LESS/LESS.tmLanguage",
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 369.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 0,
+					"file": "library/custom-post-type.php",
+					"settings":
+					{
+						"buffer_size": 6505,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3607,
+								3607
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2171.0,
+						"translation.y": 846.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "search.php",
+					"file": "page-front-introcta.php",
 					"settings":
 					{
-						"buffer_size": 2290,
+						"buffer_size": 1007,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								596,
-								596
+								764,
+								306
 							]
 						],
 						"settings":
@@ -739,25 +733,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 568.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "404.php",
+					"file": "page-front-carrousel.php",
 					"settings":
 					{
-						"buffer_size": 846,
+						"buffer_size": 2254,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								512,
-								512
+								188,
+								188
 							]
 						],
 						"settings":
@@ -773,34 +767,114 @@
 				},
 				{
 					"buffer": 6,
-					"file": "functions.php",
+					"file": "page-front-premios.php",
 					"settings":
 					{
-						"buffer_size": 8829,
+						"buffer_size": 4468,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								410,
-								410
+								3029,
+								3029
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1088.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 7,
+					"file": "page-front-bases.php",
+					"settings":
+					{
+						"buffer_size": 1590,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1032,
+								1032
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 3.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "page-front-jurado.php",
+					"settings":
+					{
+						"buffer_size": 2068,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								778,
+								778
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 141.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/Users/pedrocerilla/Desktop/category-capsulas-coyunturales.php",
+					"settings":
+					{
+						"buffer_size": 3453,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1752,
+								1752
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 508.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
 					"file": "library/less/libs/bootstrap-3.1.1/variables.less",
 					"settings":
 					{
@@ -811,8 +885,8 @@
 						"selection":
 						[
 							[
-								10701,
-								10701
+								7331,
+								7331
 							]
 						],
 						"settings":
@@ -820,25 +894,25 @@
 							"syntax": "Packages/LESS/LESS.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 5291.0,
+						"translation.y": 3025.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "parts/loop-destacados.php",
+					"buffer": 11,
+					"file": "404.php",
 					"settings":
 					{
-						"buffer_size": 788,
+						"buffer_size": 846,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								788,
-								788
+								527,
+								528
 							]
 						],
 						"settings":
@@ -861,7 +935,7 @@
 	},
 	"input":
 	{
-		"height": 30.0
+		"height": 29.0
 	},
 	"layout":
 	{
@@ -872,18 +946,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.255979477612,
 			1.0
 		],
 		"rows":
@@ -895,7 +962,7 @@
 	"menu_visible": true,
 	"replace":
 	{
-		"height": 64.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -904,11 +971,11 @@
 		"selected_items":
 		[
 			[
-				"dest",
-				"parts/loop-destacados.php"
+				"pre",
+				"page-front-premios.php"
 			],
 			[
-				"var",
+				"vari",
 				"library/less/libs/bootstrap-3.1.1/variables.less"
 			],
 			[
@@ -916,480 +983,504 @@
 				"functions.php"
 			],
 			[
-				"sea",
-				"search.php"
+				"car",
+				"page-front-carrousel.php"
+			],
+			[
+				"page-front-j",
+				"page-front-jurado.php"
 			],
 			[
 				"base",
-				"library/less/_base.less"
+				"page-front-bases.php"
 			],
 			[
-				"loo",
-				"parts/loop-archivos.php"
+				"premios",
+				"page-front-premios.php"
 			],
 			[
-				"fron",
-				"front-page.php"
+				"page-front-c",
+				"page-front-carrousel.php"
 			],
 			[
-				"ar",
-				"archive.php"
+				"page-front-i",
+				"page-front-introcta.php"
 			],
 			[
-				"arch",
-				"archive.php"
+				"custom",
+				"library/custom-post-type.php"
 			],
 			[
-				"header",
-				"header.php"
+				"page-",
+				"page-front-video.php"
 			],
 			[
-				"fr",
-				"front-page.php"
-			],
-			[
-				"front",
-				"front-page.php"
-			],
-			[
-				"loop",
-				"parts/loop-archivos.php"
-			],
-			[
-				"sing",
-				"single.php"
-			],
-			[
-				"single",
-				"single.php"
-			],
-			[
-				"side",
-				"sidebar-singles.php"
-			],
-			[
-				"forma",
-				"post-formats/format.php"
-			],
-			[
-				"looop",
-				"post-formats/loop-destacados.php"
-			],
-			[
-				"768",
-				"library/less/_768up.less"
-			],
-			[
-				"bone",
-				"library/bones.php"
-			],
-			[
-				"",
-				"post-formats/loop-archivos.php"
-			],
-			[
-				"bas",
-				"library/less/_base.less"
-			],
-			[
-				"hea",
-				"header.php"
+				"butt",
+				"library/less/libs/bootstrap-3.1.1/buttons.less"
 			],
 			[
 				"vara",
 				"library/less/libs/bootstrap-3.1.1/variables.less"
 			],
 			[
-				"footer",
-				"footer.php"
+				"pred",
+				"sitio.group/pred-form.html"
 			],
 			[
-				"4",
-				"library/less/_481up.less"
+				"noti",
+				"sitio.group/notifi-pred.html"
 			],
 			[
-				"s",
-				"library/css/style.css"
+				"parti",
+				"sitio.group/partidos.html"
+			],
+			[
+				"partido",
+				"sitio.group/partido.html"
+			],
+			[
+				"pred-",
+				"sitio.group/pred-form.html"
+			],
+			[
+				"actua",
+				"sitio.group/actualizar-cuenta.html"
+			],
+			[
+				"act",
+				"sitio.group/actualizar-perfil.html"
+			],
+			[
+				"miembros",
+				"sitio.group/miembros.html"
+			],
+			[
+				"head",
+				"sitio.group/head-interiores.html"
+			],
+			[
+				"part",
+				"sitio.group/partido.html"
+			],
+			[
+				"poli",
+				"sitio.group/politicas.html"
+			],
+			[
+				"termino",
+				"sitio.group/terminos.html"
+			],
+			[
+				"partdo",
+				"sitio.group/partidos.html"
+			],
+			[
+				"perf",
+				"sitio.group/perfil2.html"
+			],
+			[
+				"rec",
+				"sitio.group/recuperar.html"
+			],
+			[
+				"actu",
+				"sitio.group/actualizar-perfil.html"
+			],
+			[
+				"paso",
+				"sitio.group/activacion-paso3.html"
+			],
+			[
+				"bas",
+				"library/less/_base.less"
 			],
 			[
 				"inde",
-				"index.html"
+				"sitio.group/index.html"
 			],
 			[
-				"variables",
-				"library/less/libs/bootstrap-3.1.1/variables.less"
+				"entr",
+				"sitio.group/entrar.html"
 			],
 			[
-				"9",
-				"library/less/_992up.less"
+				"recuper",
+				"sitio.group/recuperar.html"
 			],
 			[
-				"ie",
-				"library/less/ie.less"
+				"regis",
+				"sitio.group/registro.html"
 			],
 			[
-				"sty",
-				"library/less/style.less"
+				"he",
+				"sitio.group/head.html"
+			],
+			[
+				"per",
+				"sitio.group/perfil2.html"
+			],
+			[
+				"ran",
+				"sitio.group/ranking.html"
+			],
+			[
+				"side",
+				"sitio.group/perfil-sidebar.html"
+			],
+			[
+				"partid",
+				"sitio.group/partido.html"
+			],
+			[
+				"meda",
+				"sitio.group/medallas.html"
+			],
+			[
+				"rankin",
+				"sitio.group/ranking-medallas.html"
+			],
+			[
+				"form",
+				"sitio.group/pred-form.html"
+			],
+			[
+				"hec",
+				"sitio.group/prediccion-hecha.html"
+			],
+			[
+				"tot",
+				"sitio.group/_total.html"
+			],
+			[
+				"part-p",
+				"sitio.group/part-puntos.html"
+			],
+			[
+				"total",
+				"sitio.group/_totalMedallas.html"
+			],
+			[
+				"part-",
+				"sitio.group/part-insignias.html"
+			],
+			[
+				"mie",
+				"sitio.group/miembros.html"
+			],
+			[
+				"ram",
+				"sitio.group/ranking.html"
+			],
+			[
+				"perfi",
+				"sitio.group/perfil2.html"
+			],
+			[
+				"",
+				"sitio.group/partidos.html"
 			],
 			[
 				"scr",
 				"library/js/scripts.js"
 			],
 			[
-				"grid",
-				"library/less/libs/bootstrap-3.1.1/grid.less"
+				"comen",
+				"sitio.group/perfil-comentarios.html"
 			],
 			[
-				"style",
-				"library/less/style.less"
+				"pred-f",
+				"sitio.group/pred-form.html"
 			],
 			[
-				"panel",
-				"library/less/libs/bootstrap-3.1.1/panels.less"
+				"predi",
+				"sitio.group/prediccion-hecha.html"
 			],
 			[
-				"stye",
-				"library/css/style.css"
+				"hea",
+				"sitio.group/head-partido.html"
 			],
 			[
-				"7",
-				"library/less/_768up.less"
+				"var",
+				"library/less/libs/bootstrap-3.1.1/variables.less"
 			],
 			[
-				"nav",
-				"library/less/libs/bootstrap-3.1.1/navbar.less"
+				"v",
+				"library/less/libs/bootstrap-3.1.1/variables.less"
 			],
 			[
-				"76",
-				"miseleccionMX2014/library/less/_768up.less"
-			],
-			[
-				"he",
-				"miseleccionMX2014/header-home.php"
-			],
-			[
-				"bones",
-				"miseleccionMX2014/library/bones.php"
-			],
-			[
-				"vide",
-				"miseleccionMX2014/library/home-videos.php"
-			],
-			[
-				"b",
-				"miseleccionMX2014/library/less/_base.less"
-			],
-			[
-				"soc",
-				"miseleccionMX2014/library/home-social.php"
-			],
-			[
-				"asoc",
-				"miseleccionMX2014/library/home-carruselAsoc.php"
-			],
-			[
-				"page",
-				"miseleccionMX2014/page-json.php"
-			],
-			[
-				"not",
-				"miseleccionMX2014/library/home-noticias.php"
-			],
-			[
-				"banner",
-				"miseleccionMX2014/library/home-banner-head.php"
-			],
-			[
-				"top",
-				"miseleccionMX2014/library/home-header-top.php"
-			],
-			[
-				"aso",
-				"miseleccionMX2014/library/home-carruselAsoc.php"
-			],
-			[
-				"notii",
-				"miseleccionMX2014/library/home-noticias.php"
-			],
-			[
-				"cust",
-				"miseleccionMX2014/library/custom-controls.php"
+				"foo",
+				"sitio.group/foot2.html"
 			],
 			[
 				"foot",
-				"miseleccionMX2014/footer.php"
+				"sitio.group/foot.html"
 			],
 			[
-				"bnner",
-				"miseleccionMX2014/library/home-banner-head.php"
+				"9",
+				"library/less/_992up.less"
 			],
 			[
-				"head",
-				"miseleccionMX2014/header.php"
+				"76",
+				"library/less/_768up.less"
 			],
 			[
-				"hee",
-				"miseleccionMX2014/library/home-banner-head.php"
+				"ind",
+				"sitio.group/index.html"
 			],
 			[
-				"custom-c",
-				"miseleccionMX2014/library/custom-controls.php"
+				"erfi",
+				"sitio.group/perfil2.html"
 			],
 			[
-				"fun",
-				"miseleccionMX2014/functions.php"
+				"_",
+				"sitio.group/_amateur.html"
 			],
 			[
-				"videos",
-				"miseleccionMX2014/library/home-videos.php"
+				"hech",
+				"sitio.group/prediccion-hecha.html"
 			],
 			[
-				"styl",
-				"miseleccionMX2014/library/less/style.less"
+				"not",
+				"sitio.group/notifi-pred.html"
+			],
+			[
+				"rank",
+				"sitio.group/ranking-medallas.html"
+			],
+			[
+				"p",
+				"sitio.group/perfil.html"
+			],
+			[
+				"hecha",
+				"sitio.group/prediccion-hecha.html"
+			],
+			[
+				"entrar",
+				"sitio.group/entrar.html"
+			],
+			[
+				"r",
+				"sitio.group/ranking.html"
+			],
+			[
+				"perfil",
+				"sitio.group/perfil.html"
+			],
+			[
+				"_to",
+				"sitio.group/_total.html"
+			],
+			[
+				"puntos",
+				"sitio.group/puntos-predicciones.html"
+			],
+			[
+				"par",
+				"sitio.group/partidos.html"
+			],
+			[
+				"punt",
+				"sitio.group/puntos-predicciones.html"
+			],
+			[
+				"pun",
+				"sitio.group/puntos-asignacion.html"
+			],
+			[
+				"ra",
+				"sitio.group/ranking.html"
+			],
+			[
+				"rn",
+				"sitio.group/ranking.html"
+			],
+			[
+				"pa",
+				"library/less/libs/bootstrap-3.1.1/pager.less"
+			],
+			[
+				"predicc",
+				"sitio.group/puntos-predicciones.html"
+			],
+			[
+				"miem",
+				"sitio.group/miembros.html"
+			],
+			[
+				"untos",
+				"sitio.group/puntos-asignacion.html"
+			],
+			[
+				"asi",
+				"sitio.group/puntos-asignacion.html"
+			],
+			[
+				"punts",
+				"sitio.group/puntos.html"
+			],
+			[
+				"med",
+				"sitio.group/ranking-medallas.html"
+			],
+			[
+				"head-",
+				"sitio.group/head-partido.html"
+			],
+			[
+				"gr",
+				"sitio.group/gracias.html"
+			],
+			[
+				"partd",
+				"sitio.group/partidos.html"
+			],
+			[
+				"puntos-as",
+				"sitio.group/puntos-asignacion.html"
+			],
+			[
+				"partidos",
+				"/Users/pedrocerilla/Repos/Quinela/site_themes/default_site/sitio.group/puntos-predicciones.html"
+			],
+			[
+				"puntos-",
+				"sitio.group/puntos-predicciones.html"
+			],
+			[
+				"part-par",
+				"sitio.group/part-partido.html"
+			],
+			[
+				"re",
+				"sitio.group/recuperar.html"
+			],
+			[
+				"punto",
+				"sitio.group/puntos-predicciones.html"
+			],
+			[
+				"asig",
+				"sitio.group/puntos-asignacion.html"
+			],
+			[
+				"cont",
+				"sitio.group/contacto.html"
+			],
+			[
+				"ac",
+				"sitio.group/actualizar-cuenta.html"
+			],
+			[
+				"unto",
+				"sitio.group/puntos.html"
 			],
 			[
 				"con",
-				"miseleccionMX2014/library/home-convocatoria.php"
+				"sitio.group/contacto.html"
 			],
 			[
-				"_4",
-				"miseleccionMX2014/library/less/_481up.less"
+				"pard",
+				"sitio.group/partido.html"
 			],
 			[
-				"_9",
-				"miseleccionMX2014/library/less/_992up.less"
+				"4",
+				"library/less/_481up.less"
 			],
 			[
-				"convo",
-				"miseleccionMX2014/single-convocatorias_type.php"
-			],
-			[
-				"fichas",
-				"miseleccionMX2014/library/int-fichas.php"
-			],
-			[
-				"header-",
-				"miseleccionMX2014/library/home-header-top.php"
-			],
-			[
-				"cale",
-				"miseleccionMX2014/library/home-calendario.php"
-			],
-			[
-				"archi",
-				"miseleccionMX2014/archive.php"
-			],
-			[
-				"style.les",
-				"miseleccionMX2014/library/less/style.less"
-			],
-			[
-				"arche",
-				"miseleccionMX2014/archive-fichas_type.php"
-			],
-			[
-				"sin",
-				"miseleccionMX2014/single-fichas_type.php"
-			],
-			[
-				"archve",
-				"miseleccionMX2014/archive-fichas_type.php"
-			],
-			[
-				"lo",
-				"miseleccionMX2014/library/loop-fichas.php"
-			],
-			[
-				"arc",
-				"miseleccionMX2014/archive.php"
-			],
-			[
-				"cus",
-				"miseleccionMX2014/library/custom-post-type.php"
-			],
-			[
-				"archive",
-				"miseleccionMX2014/archive.php"
-			],
-			[
-				"calen",
-				"miseleccionMX2014/library/home-calendario.php"
-			],
-			[
-				"calenda",
-				"miseleccionMX2014/library/home-calendario.php"
-			],
-			[
-				"json",
-				"miseleccionMX2014/page-json.php"
-			],
-			[
-				"custom-p",
-				"miseleccionMX2014/library/custom-post-type.php"
-			],
-			[
-				"se",
-				"miseleccionMX2014/search.php"
-			],
-			[
-				"sear",
-				"miseleccionMX2014/search.php"
-			],
-			[
-				"noti",
-				"miseleccionMX2014/library/home-noticias.php"
-			],
-			[
-				"notici",
-				"miseleccionMX2014/library/home-noticias.php"
-			],
-			[
-				"noticias",
-				"miseleccionMX2014/library/home-noticias.php"
-			],
-			[
-				"home",
-				"miseleccionMX2014/library/home-destacados.php"
-			],
-			[
-				"int",
-				"miseleccionMX2014/library/int-fichas.php"
-			],
-			[
-				"fich",
-				"library/int-fichas.php"
-			],
-			[
-				"404",
-				"404.php"
-			],
-			[
-				"post-d",
-				"library/controles/select/post-dropdown-custom-control.php"
-			],
-			[
-				"postu",
-				"library/controles/select/post-type-dropdown-custom-control.php"
-			],
-			[
-				"custom-",
-				"library/custom-controls.php"
-			],
-			[
-				"sig",
-				"single.php"
-			],
-			[
-				"calendar",
-				"library/home-calendario.php"
-			],
-			[
-				"social",
-				"library/home-social.php"
-			],
-			[
-				"cusmto",
-				"library/custom-controls.php"
-			],
-			[
-				"page-",
-				"page-calendario-de-partidos.php"
-			],
-			[
-				"scrip",
-				"library/js/scripts.js"
-			],
-			[
-				"post",
-				"library/custom-post-type.php"
-			],
-			[
-				"soci",
-				"library/home-social.php"
-			],
-			[
-				"class",
-				"library/class-wp-twitter-api.php"
-			],
-			[
-				"car",
-				"library/home-carruselAsoc.php"
-			],
-			[
-				"heae",
-				"header.php"
-			],
-			[
-				"styles",
-				"library/css/style.css"
-			],
-			[
-				"f",
-				"footer.php"
-			],
-			[
-				"homr",
-				"library/home-header-top.php"
-			],
-			[
-				"vr",
-				"library/less/libs/bootsrap/variables.less"
-			],
-			[
-				"home-s",
-				"library/home-social.php"
-			],
-			[
-				"heade",
-				"header.php"
-			],
-			[
-				"sine",
-				"single.php"
-			],
-			[
-				"custmo",
-				"library/custom-post-type.php"
-			],
-			[
-				"pop",
-				"library/less/libs/bootsrap/popovers.less"
-			],
-			[
-				"hed",
-				"library/home-destacados.php"
-			],
-			[
-				"home-",
-				"library/home-social.php"
-			],
-			[
-				"regis",
-				"RegistroFacebook.html"
-			],
-			[
-				"fac",
-				"RegistroFacebook.html"
-			],
-			[
-				"gra",
-				"templates/Gracias.html"
-			],
-			[
-				"trivi",
-				"templates/TriviaInactiva.html"
-			],
-			[
-				"tri",
-				"templates/Trivia.html"
+				"come",
+				"sitio.group/comentariosajax.html"
 			],
 			[
 				"reg",
-				"templates/Registro.html"
+				"sitio.group/registro.html"
+			],
+			[
+				"ter",
+				"sitio.group/terminos.html"
+			],
+			[
+				"que",
+				"sitio.group/que-es.html"
+			],
+			[
+				"js",
+				"library/js/scripts.js"
+			],
+			[
+				"en",
+				"sitio.group/entrar.html"
+			],
+			[
+				"pol",
+				"sitio.group/politicas.html"
+			],
+			[
+				"j",
+				"library/js/scripts.js"
+			],
+			[
+				"polit",
+				"sitio.group/politicas.html"
+			],
+			[
+				"registr",
+				"sitio.group/registro.html"
+			],
+			[
+				"gracas",
+				"sitio.group/gracias.html"
+			],
+			[
+				"b",
+				"library/less/_base.less"
+			],
+			[
+				"gra",
+				"sitio.group/gracias.html"
+			],
+			[
+				"va",
+				"library/less/libs/bootstrap-3.1.1/variables.less"
+			],
+			[
+				"cuent",
+				"sitio.group/actualizar-cuenta.html"
 			],
 			[
 				"regi",
-				"templates/Registro.html"
+				"sitio.group/registro.html"
+			],
+			[
+				"recu",
+				"sitio.group/recuperar.html"
+			],
+			[
+				"termi",
+				"sitio.group/terminos.html"
+			],
+			[
+				"reglas",
+				"sitio.group/reglas.html"
+			],
+			[
+				"gracias",
+				"sitio.group/gracias.html"
+			],
+			[
+				"theme",
+				"library/less/libs/bootstrap-3.1.1/theme.less"
+			],
+			[
+				"predic",
+				"sitio.group/prediccion-hecha.html"
+			],
+			[
+				"styl",
+				"library/css/style.css"
+			],
+			[
+				"pred-fo",
+				"sitio.group/pred-form.html"
 			]
 		],
 		"width": 0.0
@@ -1403,9 +1494,9 @@
 		"width": 0.0
 	},
 	"show_minimap": true,
-	"show_open_files": false,
+	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 245.0,
+	"side_bar_width": 318.0,
 	"status_bar_visible": true
 }
