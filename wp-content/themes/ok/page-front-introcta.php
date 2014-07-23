@@ -13,7 +13,7 @@
 				<div class="col-sm-8 col-sm-offset-2">
 					<div id="cta-home" class="text-center">
 						<?php $args = array(
-						'post_type' => 'front', 
+						'post_type' => 'front',
 						'posts_per_page' => 1,
 						'post_status' => 'publish',
 						'seccionesfront' => 'cta-intro-es'
@@ -28,7 +28,7 @@
 						<?php endwhile; ?>
 						<?php else : ?>
 						<?php endif; wp_reset_query();?>
-						<a href="" class="btn btn-success">El festival  <i class="fa fa-plus"></i> </a>
+						<a href="" class="btn btn-success">El festival   <i class="fa fa-plus"></i> </a>
 					</div>
 				</div>
 			</div>

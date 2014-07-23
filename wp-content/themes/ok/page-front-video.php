@@ -4,7 +4,6 @@
 */
 ?>
 <!-- Vista de inicio full width -->
-<div id="inicio">
 		<div class="inicio-block">
 				<div class="inicio-head text-center">
 						<div id="logo" class="text-center">
@@ -14,7 +13,7 @@
 						</div>
 						<div class="cta-inicio text-center">
 								<?php $args = array(
-								'post_type' => 'front', 
+								'post_type' => 'front',
 								'posts_per_page' => 1,
 								'post_status' => 'publish',
 								'seccionesfront' => 'video-inicio-es'
@@ -43,9 +42,7 @@
 								<a href="#nav">
 										<i class="fa fa-angle-double-down"></i>
 								</a>
-						</div> 
+						</div>
 				</div>
 		</div>
-</div>
-
 <!-- Fin Vista de inicio full width -->
